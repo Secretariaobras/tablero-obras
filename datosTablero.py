@@ -1,6 +1,5 @@
 import gspread
 from autentificacion import credenciales
-from calcular_estado import calcular_estado
 import pandas as pd
 
 cliente_sheets = gspread.authorize(credenciales)

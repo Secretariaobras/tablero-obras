@@ -14,139 +14,177 @@
         .kpi { background: white; border-radius: 12px; padding: 15px 25px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); min-width: 130px; }
         .kpi .numero { font-size: 1.8em; font-weight: bold; }
         .kpi .etiqueta { font-size: 0.85em; color: #7f8c8d; margin-top: 4px; }
-        .badge { display:inline-block; padding: 5px 14px; border-radius: 20px; color: white; font-weight: bold; font-size: 1em; }
+        .badge { display:inline-block; padding: 5px 14px; border-radius: 20px; color: white; font-weight: bold; }
         table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
         th { background: #2c3e50; color: white; padding: 10px; text-align: left; }
         td { padding: 9px 10px; border-bottom: 1px solid #ecf0f1; }
         tr:hover { background: #f9f9f9; }
     </style>
+    <script>
+        function toggleHist(i) {
+            var row = document.getElementById('hist_' + i);
+            row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+        }
+    </script>
 </head>
 <body>
 
 <h1>🏗️ Pavimentos articulados</h1>
 <p class="subtitulo">OBR-111</p>
 
-<!-- KPIs -->
 <div class="kpis">
     <div class="kpi">
         <div class="numero">$477.0M</div>
         <div class="etiqueta">Presupuesto</div>
     </div>
     <div class="kpi">
-        <div class="numero">$227.0M</div>
+        <div class="numero">$66.5M</div>
         <div class="etiqueta">Adjudicado</div>
     </div>
     <div class="kpi">
-        <div class="numero">$50.9M</div>
+        <div class="numero">$0.0M</div>
         <div class="etiqueta">Pagado</div>
     </div>
     <div class="kpi">
-        <div class="numero">22%</div>
+        <div class="numero">0%</div>
         <div class="etiqueta">Avance Financiero</div>
     </div>
     <div class="kpi">
-        <div class="numero"><span class="badge" style="background:#f39c12">En Ejecución</span></div>
+        <div class="numero"><span class="badge" style="background:#e74c3c">En Gestión</span></div>
         <div class="etiqueta">Estado General</div>
+    </div>
+    <div class="kpi">
+        <div class="numero" style="font-size:1.1em">2/10/2025</div>
+        <div class="etiqueta">Fecha Inicio</div>
+    </div>
+    <div class="kpi">
+        <div class="numero" style="font-size:1.1em">2/4/2026</div>
+        <div class="etiqueta">Fin Estimado</div>
     </div>
 </div>
 
-<!-- Estado por OC -->
 <div class="tarjeta">
-    <div>                            <div id="49932292-02be-4d76-94e2-85b8a47e3ed3" class="plotly-graph-div" style="height:250px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("49932292-02be-4d76-94e2-85b8a47e3ed3")) {                    Plotly.newPlot(                        "49932292-02be-4d76-94e2-85b8a47e3ed3",                        [{"hoverinfo":"text","hovertext":["PASO DE A\u00d1O: En Gesti\u00f3n","5044-24: En Gesti\u00f3n","5130-24: En Gesti\u00f3n","643-25: En Gesti\u00f3n","29_25: Finalizado","SP-584-1498: En Gesti\u00f3n"],"marker":{"color":["#e74c3c","#e74c3c","#e74c3c","#e74c3c","#27ae60","#e74c3c"]},"showlegend":false,"text":["En Gesti\u00f3n","En Gesti\u00f3n","En Gesti\u00f3n","En Gesti\u00f3n","Finalizado","En Gesti\u00f3n"],"textfont":{"color":"white","size":13},"textposition":"inside","x":["PASO DE A\u00d1O","5044-24","5130-24","643-25","29_25","SP-584-1498"],"y":[1,1,1,1,1,1],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"yaxis":{"visible":false},"title":{"text":"\ud83d\udea6 Estado por OC"},"plot_bgcolor":"white","height":250},                        {"responsive": true}                    )                };            </script>        </div>
+    <div>                            <div id="8c6cb7cd-9829-4143-9e91-8fae64efcf4a" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("8c6cb7cd-9829-4143-9e91-8fae64efcf4a")) {                    Plotly.newPlot(                        "8c6cb7cd-9829-4143-9e91-8fae64efcf4a",                        [{"hovertemplate":"\u003cb\u003e%{x}\u003c\u002fb\u003e\u003cbr\u003eImporte Acum: $%{y:,.0f}\u003cextra\u003e\u003c\u002fextra\u003e","line":{"width":2},"marker":{"size":10},"mode":"lines+markers+text","name":"3898_25","text":["$28,242,000","$0","$0","$0","$0","$0"],"textposition":"top center","visible":true,"x":["Cer","Cer2","Cer3","Cer4","Cer5","Cer6"],"y":[28242000.0,0.0,0.0,0.0,0.0,0.0],"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"legend":{"title":{"text":"OC \u2014 clic para mostrar\u002focultar"},"orientation":"h","y":-0.2},"title":{"text":"\ud83d\udcc8 Evoluci\u00f3n de Importes Acumulados por Certificado"},"xaxis":{"title":{"text":"Certificado"}},"yaxis":{"title":{"text":"Importe Acumulado ($)"}},"plot_bgcolor":"white","height":400},                        {"responsive": true}                    )                };            </script>        </div>
 </div>
 
-<!-- Avance Financiero -->
 <div class="tarjeta">
-    <div>                            <div id="8c17e359-8d73-486b-8868-d4ed19efd11d" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("8c17e359-8d73-486b-8868-d4ed19efd11d")) {                    Plotly.newPlot(                        "8c17e359-8d73-486b-8868-d4ed19efd11d",                        [{"marker":{"color":"#3498db"},"name":"Adjudicado","opacity":0.5,"text":["$0","$24,730,000","$50,900,000","$100,460,911","$50,900,000","$0"],"textposition":"outside","x":["PASO DE A\u00d1O","5044-24","5130-24","643-25","29_25","SP-584-1498"],"y":[0.0,24730000.0,50900000.0,100460911.15,50900000.0,0.0],"type":"bar"},{"marker":{"color":"#2ecc71"},"name":"Pagado","text":["$0","$0","$0","$0","$50,900,000","$0"],"textposition":"outside","x":["PASO DE A\u00d1O","5044-24","5130-24","643-25","29_25","SP-584-1498"],"y":[0,0,0,0,50900000.0,0],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"legend":{"orientation":"h","y":-0.2},"title":{"text":"\ud83d\udcb0 Avance Financiero por OC"},"barmode":"overlay","yaxis":{"title":{"text":"Monto ($)"}},"xaxis":{"title":{"text":"Orden de Compra"}},"plot_bgcolor":"white","height":400},                        {"responsive": true}                    )                };            </script>        </div>
+    <div>                            <div id="d54b6c0e-898e-4209-9a3c-2ccbf299242f" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("d54b6c0e-898e-4209-9a3c-2ccbf299242f")) {                    Plotly.newPlot(                        "d54b6c0e-898e-4209-9a3c-2ccbf299242f",                        [{"marker":{"color":"#3498db"},"name":"Adjudicado","opacity":0.5,"text":["$66,478,000","$0"],"textposition":"outside","x":["3898_25","SP-584-1498"],"y":[66478000.0,0.0],"type":"bar"},{"marker":{"color":"#2ecc71"},"name":"Pagado","text":["$0","$0"],"textposition":"outside","x":["3898_25","SP-584-1498"],"y":[0,0],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"legend":{"orientation":"h","y":-0.2},"title":{"text":"\ud83d\udcb0 Avance Financiero por OC"},"barmode":"overlay","yaxis":{"title":{"text":"Monto ($)"}},"xaxis":{"title":{"text":"Orden de Compra"}},"plot_bgcolor":"white","height":400},                        {"responsive": true}                    )                };            </script>        </div>
 </div>
 
-<!-- Tabla de OCs -->
 <div class="tarjeta">
     <h2 style="margin-top:0">📋 Detalle de Órdenes de Compra</h2>
     <table>
         <thead>
             <tr>
-                <th>OC</th>
-                <th>Proveedor</th>
-                <th>Comprometido</th>
-                <th>Adjudicado</th>
-                <th>Pagado</th>
-                <th>%</th>
-                <th>Estado</th>
-                <th>Certificado</th>
-                <th>Link</th>
+                <th>OC</th><th>Proveedor</th><th>Comprometido</th>
+                <th>Adjudicado</th><th>Pagado</th><th>%</th>
+                <th>Estado</th><th>Certificado</th><th>Historial</th>
             </tr>
         </thead>
         <tbody>
+        <tr style="cursor:pointer">
+            <td>3898_25</td>
+            <td>SZIMAD SA</td>
+            <td>$73,718,000</td>
+            <td>$66,478,000</td>
+            <td>$0</td>
+            <td>0%</td>
+            <td style="font-size:0.82em;max-width:250px">En Ejecución / Pendiente de Pago: Compras - Revision desde hace 18 días</td>
+            <td>Cer</td>
+            <td><button onclick="toggleHist(0)" style="background:#2c3e50;color:white;border:none;padding:4px 10px;border-radius:6px;cursor:pointer">📋 Ver CERs</button></td>
+        </tr>
+        
+            <tr id="hist_0" style="display:none; background:#f0f0f0">
+                <td colspan="9">
+                    <div style="padding:10px">
+                        <b>📋 Historial de Certificados — OC 3898_25</b>
+                        <table style="margin-top:8px; width:auto">
+                            <thead>
+                                <tr style="background:#2c3e50;color:white">
+                                    <th>Certificado</th>
+                                    <th>Total OC</th>
+                                    <th>Unid. Acum</th>
+                                    <th>% Acum</th>
+                                    <th>Importe Acum</th>
+                                    <th>CER</th>
+                                    <th>Fotos IN</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                <tr>
+                    <td>Cer</td>
+                    <td>$66,478,000.00</td>
+                    <td>1,078.00</td>
+                    <td>49.54%</td>
+                    <td>$28,242,000.00</td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=1540249819" target="_blank">📄 CER</a></td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=133477542" target="_blank">📸 Fotos</a></td>
+                </tr>
+                
+                <tr>
+                    <td>Cer2</td>
+                    <td>$66,478,000.00</td>
+                    <td>0.00</td>
+                    <td>0.00%</td>
+                    <td>$0.00</td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=1073423251" target="_blank">📄 CER</a></td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=977273459" target="_blank">📸 Fotos</a></td>
+                </tr>
+                
+                <tr>
+                    <td>Cer3</td>
+                    <td>$66,478,000.00</td>
+                    <td>0.00</td>
+                    <td>0.00%</td>
+                    <td>$0.00</td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=663681742" target="_blank">📄 CER</a></td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=1931706325" target="_blank">📸 Fotos</a></td>
+                </tr>
+                
+                <tr>
+                    <td>Cer4</td>
+                    <td>$66,478,000.00</td>
+                    <td>0.00</td>
+                    <td>0.00%</td>
+                    <td>$0.00</td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=530068451" target="_blank">📄 CER</a></td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=1789599340" target="_blank">📸 Fotos</a></td>
+                </tr>
+                
+                <tr>
+                    <td>Cer5</td>
+                    <td>$66,478,000.00</td>
+                    <td>0.00</td>
+                    <td>0.00%</td>
+                    <td>$0.00</td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=54356335" target="_blank">📄 CER</a></td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=1363887636" target="_blank">📸 Fotos</a></td>
+                </tr>
+                
+                <tr>
+                    <td>Cer6</td>
+                    <td>$66,478,000.00</td>
+                    <td>0.00</td>
+                    <td>0.00%</td>
+                    <td>$0.00</td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=1640032777" target="_blank">📄 CER</a></td>
+                    <td><a href="https://docs.google.com/spreadsheets/d/1OrGz8SL2IsWm7LXKSX2GdYlbkqXoYNuySCvUh-m_pa8/edit#gid=378402342" target="_blank">📸 Fotos</a></td>
+                </tr>
+                </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
             
-        <tr>
-            <td>PASO DE AÑO</td>
-            <td></td>
-            <td>$114,170,000</td>
-            <td>$0</td>
-            <td>$0</td>
-            <td>0%</td>
-            <td><span style="background:#e74c3c;color:white;padding:3px 8px;border-radius:6px;font-size:0.85em">En Gestión</span></td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
         
-        <tr>
-            <td>5044-24</td>
-            <td>CONSTRUCTORA FP SRL</td>
-            <td>$24,730,000</td>
-            <td>$24,730,000</td>
-            <td>$0</td>
-            <td>0%</td>
-            <td><span style="background:#e74c3c;color:white;padding:3px 8px;border-radius:6px;font-size:0.85em">En Gestión</span></td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        
-        <tr>
-            <td>5130-24</td>
-            <td>PROMETIN S.A.</td>
-            <td>$51,584,445</td>
-            <td>$50,900,000</td>
-            <td>$0</td>
-            <td>0%</td>
-            <td><span style="background:#e74c3c;color:white;padding:3px 8px;border-radius:6px;font-size:0.85em">En Gestión</span></td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        
-        <tr>
-            <td>643-25</td>
-            <td>VIALVASA SRL</td>
-            <td>$114,170,000</td>
-            <td>$100,460,911</td>
-            <td>$0</td>
-            <td>0%</td>
-            <td><span style="background:#e74c3c;color:white;padding:3px 8px;border-radius:6px;font-size:0.85em">En Gestión</span></td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        
-        <tr>
-            <td>29_25</td>
-            <td>PROMETIN S.A.</td>
-            <td>$51,584,445</td>
-            <td>$50,900,000</td>
-            <td>$50,900,000</td>
-            <td>100%</td>
-            <td><span style="background:#27ae60;color:white;padding:3px 8px;border-radius:6px;font-size:0.85em">Finalizado</span></td>
-            <td>Cer2</td>
-            <td><a href="https://docs.google.com/spreadsheets/d/1gnxykTNingEou9akBymoJGEZ4HSRuDg-1Zd2QJ5cMHY/edit?usp=drivesdk" target="_blank">📄 Ver</a></td>
-        </tr>
-        
-        <tr>
+        <tr style="cursor:pointer">
             <td>SP-584-1498</td>
             <td></td>
             <td>$477,000,000</td>
             <td>$0</td>
             <td>$0</td>
             <td>0%</td>
-            <td><span style="background:#e74c3c;color:white;padding:3px 8px;border-radius:6px;font-size:0.85em">En Gestión</span></td>
+            <td style="font-size:0.82em;max-width:250px">En gestión desde hace 43 días, se encuentra en Compras-1°llamado  desde hace 14 días</td>
             <td>-</td>
             <td>-</td>
         </tr>
@@ -155,131 +193,214 @@
     </table>
 </div>
 
-<!-- Avance Físico -->
 <div class="tarjeta">
     <h2 style="margin-top:0">🔧 Avance Físico por Certificado</h2>
 </div>
 
             <div class="tarjeta">
-                <div>                            <div id="4f44b288-f717-4ed7-9bc6-e613395353b7" class="plotly-graph-div" style="height:350px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("4f44b288-f717-4ed7-9bc6-e613395353b7")) {                    Plotly.newPlot(                        "4f44b288-f717-4ed7-9bc6-e613395353b7",                        [{"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003eAnterior: %{x:.1f}%\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#95a5a6"},"name":"Anterior","orientation":"h","text":["0.5%","2.0%","75.0%","66.7%","0.3%"],"textposition":"inside","x":[0.46,2.0,75.0,66.67,0.26],"y":["\u00cdtem 1: MANO DE OBRA Y MATERIALES - CONDUCTO DE ","\u00cdtem 2: MANO DE OBRA Y MATERIALES - PROVISION Y ","\u00cdtem 3: MANO DE OBRA Y MATERIALES - CAMARA DE IN","\u00cdtem 4: MANO DE OBRA Y MATERIALES - SUMIDERO S4","\u00cdtem 5: MANO DE OBRA Y MATERIALES - PAVIMENTO DE"],"type":"bar"},{"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003eEn Mes: %{x:.1f}%\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#3498db"},"name":"En Mes","orientation":"h","text":["0.9%","2.0%","25.0%","16.7%","0.0%"],"textposition":"inside","x":[0.93,2.0,25.0,16.67,0.0],"y":["\u00cdtem 1: MANO DE OBRA Y MATERIALES - CONDUCTO DE ","\u00cdtem 2: MANO DE OBRA Y MATERIALES - PROVISION Y ","\u00cdtem 3: MANO DE OBRA Y MATERIALES - CAMARA DE IN","\u00cdtem 4: MANO DE OBRA Y MATERIALES - SUMIDERO S4","\u00cdtem 5: MANO DE OBRA Y MATERIALES - PAVIMENTO DE"],"type":"bar"},{"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003eAcumulado: %{x:.1f}%\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#9b59b6"},"name":"Acumulado","orientation":"h","text":["1.4%","4.0%","100.0%","83.3%","0.3%"],"textposition":"inside","x":[1.39,4.0,100.0,83.33,0.26],"y":["\u00cdtem 1: MANO DE OBRA Y MATERIALES - CONDUCTO DE ","\u00cdtem 2: MANO DE OBRA Y MATERIALES - PROVISION Y ","\u00cdtem 3: MANO DE OBRA Y MATERIALES - CAMARA DE IN","\u00cdtem 4: MANO DE OBRA Y MATERIALES - SUMIDERO S4","\u00cdtem 5: MANO DE OBRA Y MATERIALES - PAVIMENTO DE"],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"title":{"text":"% Avance"},"range":[0,115]},"legend":{"orientation":"h","y":-0.15},"title":{"text":"\ud83d\udd27 Avance F\u00edsico (%) \u2014 OC: 29_25 | Cer2"},"barmode":"group","plot_bgcolor":"white","height":350},                        {"responsive": true}                    )                };            </script>        </div>
+                <div>                            <div id="fbd87153-f50e-4441-8612-e26456febb27" class="plotly-graph-div" style="height:700px; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("fbd87153-f50e-4441-8612-e26456febb27")) {                    Plotly.newPlot(                        "fbd87153-f50e-4441-8612-e26456febb27",                        [{"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003eAnterior: %{x:.1f}%\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#95a5a6"},"name":"Anterior","orientation":"h","text":["0.0%","0.0%","0.0%","0.0%","0.0%","0.0%","0.0%","0.0%","0.0%","0.0%"],"textposition":"inside","x":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"y":["\u00cdtem 1: MANO DE OBRA Y MATERIALES - SOLADOS - ej","\u00cdtem 2: MANO DE OBRA Y MATERIALES - SOLADOS - ej","\u00cdtem 3: MANO DE OBRA Y MATERIALES - SOLADOS - ej","\u00cdtem 4: MANO DE OBRA Y MATERIALES - EQUIPAMIENTO","\u00cdtem 5: MANO DE OBRA Y MATERIALES - EQUIPAMIENTO","\u00cdtem 6: MANO DE OBRA Y MATERIALES - INSTALACI\u00d3N ","\u00cdtem 7: MANO DE OBRA Y MATERIALES - RIEGO - sist","\u00cdtem 8: MANO DE OBRA Y MATERIALES - PARQUIZACION","\u00cdtem 9: MANO DE OBRA Y MATERIALES - PARQUIZACION","\u00cdtem 10: MANO DE OBRA  Y MATERIALES - ALBA\u00d1ILERIA"],"type":"bar"},{"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003eEn Mes: %{x:.1f}%\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#3498db"},"name":"En Mes","orientation":"h","text":["57.1%","0.0%","66.7%","0.0%","0.0%","50.0%","50.0%","0.0%","0.0%","100.0%"],"textposition":"inside","x":[57.14,0.0,66.67,0.0,0.0,50.0,50.0,0.0,0.0,100.0],"y":["\u00cdtem 1: MANO DE OBRA Y MATERIALES - SOLADOS - ej","\u00cdtem 2: MANO DE OBRA Y MATERIALES - SOLADOS - ej","\u00cdtem 3: MANO DE OBRA Y MATERIALES - SOLADOS - ej","\u00cdtem 4: MANO DE OBRA Y MATERIALES - EQUIPAMIENTO","\u00cdtem 5: MANO DE OBRA Y MATERIALES - EQUIPAMIENTO","\u00cdtem 6: MANO DE OBRA Y MATERIALES - INSTALACI\u00d3N ","\u00cdtem 7: MANO DE OBRA Y MATERIALES - RIEGO - sist","\u00cdtem 8: MANO DE OBRA Y MATERIALES - PARQUIZACION","\u00cdtem 9: MANO DE OBRA Y MATERIALES - PARQUIZACION","\u00cdtem 10: MANO DE OBRA  Y MATERIALES - ALBA\u00d1ILERIA"],"type":"bar"},{"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003eAcumulado: %{x:.1f}%\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#9b59b6"},"name":"Acumulado","orientation":"h","text":["57.1%","0.0%","66.7%","0.0%","0.0%","50.0%","50.0%","0.0%","0.0%","100.0%"],"textposition":"inside","x":[57.14,0.0,66.67,0.0,0.0,50.0,50.0,0.0,0.0,100.0],"y":["\u00cdtem 1: MANO DE OBRA Y MATERIALES - SOLADOS - ej","\u00cdtem 2: MANO DE OBRA Y MATERIALES - SOLADOS - ej","\u00cdtem 3: MANO DE OBRA Y MATERIALES - SOLADOS - ej","\u00cdtem 4: MANO DE OBRA Y MATERIALES - EQUIPAMIENTO","\u00cdtem 5: MANO DE OBRA Y MATERIALES - EQUIPAMIENTO","\u00cdtem 6: MANO DE OBRA Y MATERIALES - INSTALACI\u00d3N ","\u00cdtem 7: MANO DE OBRA Y MATERIALES - RIEGO - sist","\u00cdtem 8: MANO DE OBRA Y MATERIALES - PARQUIZACION","\u00cdtem 9: MANO DE OBRA Y MATERIALES - PARQUIZACION","\u00cdtem 10: MANO DE OBRA  Y MATERIALES - ALBA\u00d1ILERIA"],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"title":{"text":"% Avance"},"range":[0,115]},"legend":{"orientation":"h","y":-0.15},"title":{"text":"\ud83d\udd27 Avance F\u00edsico (%) \u2014 OC: 3898_25 | Cer"},"barmode":"group","plot_bgcolor":"white","height":700},                        {"responsive": true}                    )                };            </script>        </div>
                 <h3 style="margin-top:25px;color:#6c3483">📊 Detalle por Ítem</h3>
                 
             <div style="overflow-x:auto; margin-top:20px">
                 <table>
                     <thead>
                         <tr style="background:#6c3483;color:white">
-                            <th>#</th>
-                            <th>Denominación</th>
-                            <th>Und</th>
-                            <th>Cantidad</th>
-                            <th>P. Unitario</th>
-                            <th>Total</th>
-                            <th>% Inc</th>
-                            <th>Cant. Ant</th>
-                            <th>Cant. Mes</th>
-                            <th>Cant. Acum</th>
-                            <th>% Ant</th>
-                            <th>% Mes</th>
-                            <th>% Acum</th>
-                            <th>Imp. Ant</th>
-                            <th>Imp. Mes</th>
-                            <th>Imp. Acum</th>
+                            <th>#</th><th>Denominación</th><th>Und</th><th>Cantidad</th>
+                            <th>P. Unitario</th><th>Total</th><th>% Inc</th>
+                            <th>Cant. Ant</th><th>Cant. Mes</th><th>Cant. Acum</th>
+                            <th>% Ant</th><th>% Mes</th><th>% Acum</th>
+                            <th>Imp. Ant</th><th>Imp. Mes</th><th>Imp. Acum</th>
                         </tr>
                     </thead>
                     <tbody>
                 <tr>
                     <td><b>1</b></td>
-                    <td>MANO DE OBRA Y MATERIALES - CONDUCTO DE HORMIGON ARMADO 2.60 X 2.00</td>
-                    <td>M</td>
-                    <td>216.00</td>
-                    <td>$2,537,866.00</td>
-                    <td>$548,179,056.00</td>
-                    <td>67.61%</td>
-                    <td>1.00</td>
-                    <td>2.00</td>
-                    <td>3.00</td>
-                    <td>0.5%</td>
-                    <td>0.9%</td>
-                    <td><b>1.4%</b></td>
-                    <td>$2,537,866.00</td>
-                    <td>$5,075,732.00</td>
-                    <td><b>$7,613,598.00</b></td>
+                    <td>MANO DE OBRA Y MATERIALES - SOLADOS - ejecución de veredas de hormigon peinado e_12 cm</td>
+                    <td>m</td>
+                    <td>700.00</td>
+                    <td>$47,000.00</td>
+                    <td>$32,900,000.00</td>
+                    <td>49.49%</td>
+                    <td>0.00</td>
+                    <td>400.00</td>
+                    <td>400.00</td>
+                    <td>0.0%</td>
+                    <td>57.1%</td>
+                    <td><b>57.1%</b></td>
+                    <td>$0.00</td>
+                    <td>$18,800,000.00</td>
+                    <td><b>$18,800,000.00</b></td>
                 </tr>
                 
                 <tr>
                     <td><b>2</b></td>
-                    <td>MANO DE OBRA Y MATERIALES - PROVISION Y COLOCACION DE CONDUCTO DE HORMIGON ARMADO DE (DIAMETRO) 600MM</td>
-                    <td>M</td>
-                    <td>100.00</td>
-                    <td>$116,557.00</td>
-                    <td>$11,655,700.00</td>
-                    <td>1.44%</td>
-                    <td>2.00</td>
-                    <td>2.00</td>
+                    <td>MANO DE OBRA Y MATERIALES - SOLADOS - ejecución derampas peatonales de hormigon in situ con borde de baldoson podotactil</td>
+                    <td>u</td>
                     <td>4.00</td>
-                    <td>2.0%</td>
-                    <td>2.0%</td>
-                    <td><b>4.0%</b></td>
-                    <td>$233,114.00</td>
-                    <td>$233,114.00</td>
-                    <td><b>$466,228.00</b></td>
+                    <td>$110,000.00</td>
+                    <td>$440,000.00</td>
+                    <td>0.66%</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.0%</td>
+                    <td>0.0%</td>
+                    <td><b>0.0%</b></td>
+                    <td>$0.00</td>
+                    <td>$0.00</td>
+                    <td><b>$0.00</b></td>
                 </tr>
                 
                 <tr>
                     <td><b>3</b></td>
-                    <td>MANO DE OBRA Y MATERIALES - CAMARA DE INSPECCION</td>
-                    <td>UNIDAD</td>
-                    <td>4.00</td>
-                    <td>$1,052,420.00</td>
-                    <td>$4,209,680.00</td>
-                    <td>0.52%</td>
-                    <td>3.00</td>
-                    <td>1.00</td>
-                    <td>4.00</td>
-                    <td>75.0%</td>
-                    <td>25.0%</td>
-                    <td><b>100.0%</b></td>
-                    <td>$3,157,260.00</td>
-                    <td>$1,052,420.00</td>
-                    <td><b>$4,209,680.00</b></td>
+                    <td>MANO DE OBRA Y MATERIALES - SOLADOS - ejecución aporte de suelo estabilizado 0-6 esp. 5cm c/ cordon perimetral de 10x15 cm</td>
+                    <td>m</td>
+                    <td>180.00</td>
+                    <td>$31,600.00</td>
+                    <td>$5,688,000.00</td>
+                    <td>8.56%</td>
+                    <td>0.00</td>
+                    <td>120.00</td>
+                    <td>120.00</td>
+                    <td>0.0%</td>
+                    <td>66.7%</td>
+                    <td><b>66.7%</b></td>
+                    <td>$0.00</td>
+                    <td>$3,792,000.00</td>
+                    <td><b>$3,792,000.00</b></td>
                 </tr>
                 
                 <tr>
                     <td><b>4</b></td>
-                    <td>MANO DE OBRA Y MATERIALES - SUMIDERO S4</td>
-                    <td>UNIDAD</td>
-                    <td>6.00</td>
-                    <td>$2,099,867.00</td>
-                    <td>$12,599,202.00</td>
-                    <td>1.55%</td>
-                    <td>4.00</td>
-                    <td>1.00</td>
-                    <td>5.00</td>
-                    <td>66.7%</td>
-                    <td>16.7%</td>
-                    <td><b>83.3%</b></td>
-                    <td>$8,399,468.00</td>
-                    <td>$2,099,867.00</td>
-                    <td><b>$10,499,335.00</b></td>
+                    <td>MANO DE OBRA Y MATERIALES - EQUIPAMIENTO - ejecución de bancos corridos de hormigon armado</td>
+                    <td>m</td>
+                    <td>80.00</td>
+                    <td>$130,000.00</td>
+                    <td>$10,400,000.00</td>
+                    <td>15.64%</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.0%</td>
+                    <td>0.0%</td>
+                    <td><b>0.0%</b></td>
+                    <td>$0.00</td>
+                    <td>$0.00</td>
+                    <td><b>$0.00</b></td>
                 </tr>
                 
                 <tr>
                     <td><b>5</b></td>
-                    <td>MANO DE OBRA Y MATERIALES - PAVIMENTO DE HORMIGON DE 15CM CON BASE DE HORMIGON POBRE</td>
-                    <td>M2</td>
-                    <td>1,950.00</td>
-                    <td>$120,090.00</td>
-                    <td>$234,175,500.00</td>
-                    <td>28.88%</td>
-                    <td>5.00</td>
+                    <td>MANO DE OBRA Y MATERIALES - EQUIPAMIENTO - provision y colocación de bicicleteros</td>
+                    <td>u</td>
+                    <td>6.00</td>
+                    <td>$75,000.00</td>
+                    <td>$450,000.00</td>
+                    <td>0.68%</td>
                     <td>0.00</td>
-                    <td>5.00</td>
-                    <td>0.3%</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
                     <td>0.0%</td>
-                    <td><b>0.3%</b></td>
-                    <td>$600,450.00</td>
+                    <td>0.0%</td>
+                    <td><b>0.0%</b></td>
                     <td>$0.00</td>
-                    <td><b>$600,450.00</b></td>
+                    <td>$0.00</td>
+                    <td><b>$0.00</b></td>
+                </tr>
+                
+                <tr>
+                    <td><b>6</b></td>
+                    <td>MANO DE OBRA Y MATERIALES - INSTALACIÓN ELECTRICA -  provision y colocación de luminarias completas</td>
+                    <td>u</td>
+                    <td>16.00</td>
+                    <td>$500,000.00</td>
+                    <td>$8,000,000.00</td>
+                    <td>12.03%</td>
+                    <td>0.00</td>
+                    <td>8.00</td>
+                    <td>8.00</td>
+                    <td>0.0%</td>
+                    <td>50.0%</td>
+                    <td><b>50.0%</b></td>
+                    <td>$0.00</td>
+                    <td>$4,000,000.00</td>
+                    <td><b>$4,000,000.00</b></td>
+                </tr>
+                
+                <tr>
+                    <td><b>7</b></td>
+                    <td>MANO DE OBRA Y MATERIALES - RIEGO - sistema de riego</td>
+                    <td>m</td>
+                    <td>900.00</td>
+                    <td>$1,000.00</td>
+                    <td>$900,000.00</td>
+                    <td>1.35%</td>
+                    <td>0.00</td>
+                    <td>450.00</td>
+                    <td>450.00</td>
+                    <td>0.0%</td>
+                    <td>50.0%</td>
+                    <td><b>50.0%</b></td>
+                    <td>$0.00</td>
+                    <td>$450,000.00</td>
+                    <td><b>$450,000.00</b></td>
+                </tr>
+                
+                <tr>
+                    <td><b>8</b></td>
+                    <td>MANO DE OBRA Y MATERIALES - PARQUIZACION - provision y colocación de tierra negra</td>
+                    <td>m</td>
+                    <td>90.00</td>
+                    <td>$50,000.00</td>
+                    <td>$4,500,000.00</td>
+                    <td>6.77%</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.0%</td>
+                    <td>0.0%</td>
+                    <td><b>0.0%</b></td>
+                    <td>$0.00</td>
+                    <td>$0.00</td>
+                    <td><b>$0.00</b></td>
+                </tr>
+                
+                <tr>
+                    <td><b>9</b></td>
+                    <td>MANO DE OBRA Y MATERIALES - PARQUIZACION - provision y colocación de plantas</td>
+                    <td>m</td>
+                    <td>100.00</td>
+                    <td>$20,000.00</td>
+                    <td>$2,000,000.00</td>
+                    <td>3.01%</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.00</td>
+                    <td>0.0%</td>
+                    <td>0.0%</td>
+                    <td><b>0.0%</b></td>
+                    <td>$0.00</td>
+                    <td>$0.00</td>
+                    <td><b>$0.00</b></td>
+                </tr>
+                
+                <tr>
+                    <td><b>10</b></td>
+                    <td>MANO DE OBRA  Y MATERIALES - ALBAÑILERIA - ejecución de ermita con reposición de imagen San Cayetano</td>
+                    <td>%</td>
+                    <td>100.00</td>
+                    <td>$12,000.00</td>
+                    <td>$1,200,000.00</td>
+                    <td>1.81%</td>
+                    <td>0.00</td>
+                    <td>100.00</td>
+                    <td>100.00</td>
+                    <td>0.0%</td>
+                    <td>100.0%</td>
+                    <td><b>100.0%</b></td>
+                    <td>$0.00</td>
+                    <td>$1,200,000.00</td>
+                    <td><b>$1,200,000.00</b></td>
                 </tr>
                 </tbody>
                 </table>

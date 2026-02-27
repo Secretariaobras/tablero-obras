@@ -4,10 +4,7 @@ from calcular_estado import calcular_estado
 import json
 
 def construir_tablero():
-    print("📥 Descargando datos de Sheets...")
     df_resultado, df_suministro, df_pagos, dict_total_pagado, dict_ultimo_estado = obtener_datos_tablero()
-
-    print("📂 Leyendo certificados de Drive...")
     certificados = obtener_certificados()
 
     tablero = []
@@ -15,8 +12,8 @@ def construir_tablero():
     for cat, grupo in df_resultado.groupby("Cat Programatica"):
         proyecto = {
             "cat_programatica": cat,
-            "nombre_proyecto": grupo.iloc[0]["Nombre Proyecto"],
-            "presupuesto": grupo.iloc[0]["Presupuesto"],
+            "nombre_proyecto":  grupo.iloc[0]["Nombre Proyecto"],
+            "presupuesto":      grupo.iloc[0]["Presupuesto"],
             "ocs": []
         }
 
@@ -29,16 +26,19 @@ def construir_tablero():
             datos_cer  = certificados.get(oc)
 
             proyecto["ocs"].append({
-                "oc": oc,
-                "proveedor": row["Proveedor"],
-                "comprometido": row["Monto comprometido"],
-                "adjudicado": adjudicado,
-                "pagado": pago,
-                "porcentaje": porcentaje,
-                "estado": estado,
-                "certificado": datos_cer["certificado"] if datos_cer else None,
-                "link_certificado": datos_cer["link"] if datos_cer else None,
-                "items": datos_cer["items"] if datos_cer else []
+                "oc":                 oc,
+                "proveedor":          row["Proveedor"],
+                "comprometido":       row["Monto comprometido"],
+                "adjudicado":         adjudicado,
+                "pagado":             pago,
+                "porcentaje":         porcentaje,
+                "estado":             estado,
+                "certificado":        datos_cer["certificado"]        if datos_cer else None,
+                "fecha_inicio":       datos_cer["fecha_inicio"]       if datos_cer else "",
+                "fecha_fin_estimada": datos_cer["fecha_fin_estimada"] if datos_cer else "",
+                "historial_cer":      datos_cer["historial_cer"]      if datos_cer else [],
+                "link_certificado":   datos_cer["link"]               if datos_cer else None,
+                "items":              datos_cer["items"]              if datos_cer else []
             })
 
         tablero.append(proyecto)
@@ -49,9 +49,7 @@ def construir_tablero():
 if __name__ == "__main__":
     tablero = construir_tablero()
 
-    # Guardamos JSON para inspeccionar antes de ir a Notion
     with open("tablero.json", "w", encoding="utf-8") as f:
         json.dump(tablero, f, ensure_ascii=False, indent=2, default=str)
 
-    print(f"\n✅ Tablero construido: {len(tablero)} proyectos")
-    print("💾 Guardado en tablero.json")
+    print(f"✅ Tablero construido: {len(tablero)} proyectos → tablero.json")
