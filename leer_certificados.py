@@ -1,4 +1,6 @@
 import gspread
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from googleapiclient.discovery import build
 from autentificacion import credenciales
 
@@ -10,257 +12,234 @@ CARPETAS_RAIZ = [
     "1vbTQLKwZQT_V7u5HKC0xUMKMm3GHOQrl"
 ]
 
+# ── Rate-limit config ────────────────────────────────────────────────────────
+MAX_WORKERS        = 4
+MAX_RETRIES        = 5
+BACKOFF_BASE       = 1.5  # seconds; doubles on each retry
+# ────────────────────────────────────────────────────────────────────────────
 
+def limpiar(val):
+    v = str(val).replace("$", "").replace("%", "").replace(",", "").strip()
+    return float(v) if v and v not in ("-", "") else 0.0
+
+
+# ── Retry helper (replaces flat sleep) ──────────────────────────────────────
+def con_reintentos(fn, *args, **kwargs):
+    """Call fn(*args, **kwargs) with exponential backoff on quota errors."""
+    for intento in range(MAX_RETRIES):
+        try:
+            return fn(*args, **kwargs)
+        except gspread.exceptions.APIError as e:
+            if e.response.status_code in (429, 500, 503) and intento < MAX_RETRIES - 1:
+                espera = BACKOFF_BASE * (2 ** intento)
+                print(f"  ⏳ Cuota/error transitorio – reintentando en {espera:.1f}s…")
+                time.sleep(espera)
+            else:
+                raise
+    return None
+
+
+# ── Drive listing (unchanged logic, unchanged API surface) ───────────────────
 def listar_sheets_en_carpeta(carpeta_id):
     archivos = []
+    query = f"'{carpeta_id}' in parents and trashed = false"
     resultado = servicio_drive.files().list(
-        q=f"'{carpeta_id}' in parents and trashed = false",
+        q=query,
         fields="files(id, name, mimeType, webViewLink)"
     ).execute()
+
     for item in resultado.get("files", []):
         if item["mimeType"] == "application/vnd.google-apps.folder":
             archivos += listar_sheets_en_carpeta(item["id"])
         elif item["mimeType"] == "application/vnd.google-apps.spreadsheet":
             archivos.append({
-                "id": item["id"],
+                "id":     item["id"],
                 "nombre": item["name"],
-                "link": item["webViewLink"]
+                "link":   item["webViewLink"]
             })
     return archivos
 
 
-def normalizar_oc(oc):
-    return oc.replace("/", "_") if oc else None
+# ── OPTIMISATION 1: batch-fetch ALL sheet data in a single API call ──────────
+def _fetch_todas_las_filas(ss, hojas_a_leer: list) -> dict[str, list]:
+    """
+    Returns {sheet_title: [[row values]]} for every sheet in hojas_a_leer.
+    Uses a single spreadsheets.values.batchGet call instead of N calls.
+    """
+    if not hojas_a_leer:
+        return {}
+
+    # gspread exposes the raw Sheets v4 client via ss.client.auth
+    # We use ss.values_batch_get which maps directly to batchGet.
+    ranges = [f"'{h.title}'" for h in hojas_a_leer]
+    response = con_reintentos(ss.values_batch_get, ranges)
+
+    result = {}
+    for vr in response.get("valueRanges", []):
+        # The range key looks like "'CER1'!A1:Z1000" – extract the sheet title
+        titulo = vr.get("range", "").split("!")[0].strip("'")
+        result[titulo] = vr.get("values", [])
+    return result
 
 
-def obtener_oc_del_archivo(sheet_id):
+def procesar_archivo_completo(sheet_id, web_link):
     try:
-        sheet = cliente_sheets.open_by_key(sheet_id)
-        hoja = sheet.worksheet("Procesar OC")
-        oc = hoja.acell("B2").value
-        oc = normalizar_oc(oc)
-        return oc.strip() if oc else None
-    except:
-        return None
+        ss = con_reintentos(cliente_sheets.open_by_key, sheet_id)
+        todas_hojas = ss.worksheets()
+        nombres_hojas = {h.title for h in todas_hojas}
 
+        # 1. Obtener OC ── OPTIMISATION 2: include "Procesar OC" in batch below
+        #    We defer reading B2 until after the batch fetch.
+        oc = None
+        hoja_oc_obj = next((h for h in todas_hojas if h.title == "Procesar OC"), None)
 
-def obtener_ultimo_cer_completo(sheet_id):
-    try:
-        sheet = cliente_sheets.open_by_key(sheet_id)
-        hojas = sheet.worksheets()
-        hojas_cer = [h for h in hojas if h.title.upper().startswith("CER")]
+        # 2. Identificar hojas CER e IN
+        hojas_cer_objs = sorted(
+            [h for h in todas_hojas if h.title.upper().startswith("CER")],
+            key=lambda h: _extraer_numero(h.title)
+        )
+        hojas_in_ids = {
+            h.title.upper(): h.id
+            for h in todas_hojas if h.title.upper().startswith("IN")
+        }
 
-        def numero_cer(hoja):
-            try:
-                return int(hoja.title.upper().replace("CER", "").strip())
-            except:
-                return 0
+        # ── BATCH FETCH: OC sheet + all CER sheets in one round-trip ─────────
+        hojas_a_leer = ([hoja_oc_obj] if hoja_oc_obj else []) + hojas_cer_objs
+        datos_batch = _fetch_todas_las_filas(ss, hojas_a_leer)
 
-        hojas_cer_ordenadas = sorted(hojas_cer, key=numero_cer)
-        ultimo_completo = None
+        # Resolve OC from cached data (no extra API call)
+        if hoja_oc_obj:
+            filas_oc = datos_batch.get("Procesar OC", [])
+            val_b2 = filas_oc[1][1] if len(filas_oc) > 1 and len(filas_oc[1]) > 1 else None
+            if val_b2:
+                oc = val_b2.replace("/", "_").strip()
 
-        for hoja in hojas_cer_ordenadas:
-            datos = hoja.get_all_values()
-            tiene_vacios = False
-            encontro_items = False
+        if not oc or oc.upper().startswith("SP"):
+            return None
 
-            for fila in datos:
-                if len(fila) > 1 and "Items" in fila[1]:
-                    encontro_items = True
-                    continue
-                if encontro_items and len(fila) > 2 and "TOTALES" in str(fila[2]).upper():
-                    break
-                if encontro_items and len(fila) >= 11 and fila[2].strip() != "" and fila[1] != "":
-                    if fila[10].strip() == "":
-                        tiene_vacios = True
-                        break
+        # 3. Procesar cada CER con los datos ya en memoria
+        historial_cer = []
+        ultimo_completo_data = None
 
-            if encontro_items and not tiene_vacios:
-                ultimo_completo = hoja.title
-            elif encontro_items and tiene_vacios:
-                break
-
-        return ultimo_completo
-    except:
-        return None
-
-
-def limpiar(val):
-    v = str(val).replace("$", "").replace("%", "").replace(",", "").strip()
-    return float(v) if v and v != "-" and v != "" else 0.0
-
-
-def extraer_items_certificado(sheet_id, nombre_hoja, link_archivo):
-    try:
-        sheet = cliente_sheets.open_by_key(sheet_id)
-        hoja = sheet.worksheet(nombre_hoja)
-        filas = hoja.get_all_values()
-
-        numero_oc          = filas[6][12].strip() if len(filas) > 6 and len(filas[6]) > 12 else "?"
-        fecha_inicio       = filas[4][12].strip() if len(filas) > 4 and len(filas[4]) > 12 else ""
-        fecha_fin_estimada = filas[7][12].strip() if len(filas) > 7 and len(filas[7]) > 12 else ""
-
-        items = []
-        leyendo_items = False
-
-        for fila in filas:
-            if len(fila) > 2 and "TOTALES" in str(fila[2]).upper():
-                break
-            if len(fila) > 1 and "Items" in fila[1]:
-                leyendo_items = True
+        for hoja in hojas_cer_objs:
+            filas = datos_batch.get(hoja.title, [])
+            if not filas:
                 continue
-            if leyendo_items and len(fila) >= 17 and fila[2].strip() != "" and fila[1].strip() != "":
-                items.append({
-                    "OC": numero_oc,
-                    "Certificado": nombre_hoja,
-                    "Item": fila[1],
-                    "Denominacion": fila[2],
-                    "Unidad": fila[3],
-                    "Cantidad": fila[4],
-                    "Precio_Unitario": fila[5],
-                    "Total": limpiar(fila[6]),
-                    "%Inc": limpiar(fila[7]),
-                    "Cantidad_Anterior": fila[8],
-                    "Cantidad_en_mes": fila[9],
-                    "Cantidad_acumulada": fila[10],
-                    "Porcentaje_anterior": limpiar(fila[11]),
-                    "Porcentaje_en_mes": limpiar(fila[12]),
-                    "Porcentaje_Acumulado": limpiar(fila[13]),
-                    "Importe_anterior": limpiar(fila[14]),
-                    "Importe_en_mes": limpiar(fila[15]),
-                    "Importe_Acumulado": limpiar(fila[16]),
-                    "Link_Drive": link_archivo
-                })
 
-        return {
-            "items": items,
-            "fecha_inicio": fecha_inicio,
-            "fecha_fin_estimada": fecha_fin_estimada
+            res = analizar_hoja_cer(filas, hoja, sheet_id, hojas_in_ids, web_link)
+            if res["cant_items"] > 0:
+                historial_cer.append(res["resumen"])
+
+                if res["es_completo"]:
+                    ultimo_completo_data = {
+                        "certificado":       hoja.title,
+                        "items":             res["items_detalle"],
+                        "fecha_inicio":      res["fecha_inicio"],
+                        "fecha_fin_estimada": res["fecha_fin_estimada"],
+                    }
+                else:
+                    break
+
+        if not ultimo_completo_data:
+            return None
+
+        return oc, {
+            **ultimo_completo_data,
+            "historial_cer": historial_cer,
+            "link": web_link,
         }
 
     except Exception as e:
-        print(f"  ⚠️  Error extrayendo ítems de {nombre_hoja}: {e}")
-        return {"items": [], "fecha_inicio": "", "fecha_fin_estimada": ""}
+        print(f"  ⚠️ Error procesando {sheet_id}: {e}")
+        return None
 
 
-def obtener_resumen_todos_los_cer(sheet_id):
+def _extraer_numero(titulo):
     try:
-        sheet = cliente_sheets.open_by_key(sheet_id)
-        hojas = sheet.worksheets()
-        hojas_cer = [h for h in hojas if h.title.upper().startswith("CER")]
-        # Mapa de hojas IN por número
-        hojas_in = {h.title.upper(): h for h in hojas if h.title.upper().startswith("IN")}
-
-        def numero_cer(hoja):
-            try:
-                return int(hoja.title.upper().replace("CER", "").strip())
-            except:
-                return 0
-
-        hojas_cer_ordenadas = sorted(hojas_cer, key=numero_cer)
-        resumenes = []
-
-        for hoja in hojas_cer_ordenadas:
-            filas = hoja.get_all_values()
-            num = hoja.title.upper().replace("CER", "").strip()
-
-            # Links directos a las hojas
-            link_cer = f"https://docs.google.com/spreadsheets/d/{sheet_id}/edit#gid={hoja.id}"
-            hoja_in  = hojas_in.get(f"IN{num}")
-            link_in  = f"https://docs.google.com/spreadsheets/d/{sheet_id}/edit#gid={hoja_in.id}" if hoja_in else None
-
-            total_oc           = 0.0
-            total_unidad_acum  = 0.0
-            total_cantidad     = 0.0
-            total_importe_acum = 0.0
-            leyendo_items      = False
-            cant_items         = 0
-
-            for fila in filas:
-                if len(fila) > 2 and "TOTALES" in str(fila[2]).upper():
-                    break
-                if len(fila) > 1 and "Items" in fila[1]:
-                    leyendo_items = True
-                    continue
-                if leyendo_items and len(fila) >= 17 and fila[2].strip() != "" and fila[1].strip() != "":
-                    total_oc           += limpiar(fila[6])
-                    total_unidad_acum  += limpiar(fila[10])
-                    total_importe_acum += limpiar(fila[16])
-                    total_cantidad     += limpiar(fila[4])
-                    cant_items         += 1
-
-            if cant_items > 0:
-                total_pct_acum = round(total_unidad_acum * 100 / total_cantidad, 2) if total_cantidad > 0 else 0.0
-                resumenes.append({
-                    "certificado":        hoja.title,
-                    "total_oc":           total_oc,
-                    "total_unidad_acum":  total_unidad_acum,
-                    "total_pct_acum":     total_pct_acum,
-                    "total_importe_acum": total_importe_acum,
-                    "link_cer":           link_cer,
-                    "link_in":            link_in,
-                })
-
-        return resumenes
-    except Exception as e:
-        print(f"  ⚠️  Error leyendo resumen de CERs: {e}")
-        return []
+        return int(titulo.upper().replace("CER", "").strip())
+    except ValueError:
+        return 0
 
 
+def analizar_hoja_cer(filas, hoja, sheet_id, hojas_in_ids, web_link):
+    """Procesa los datos de las filas de una pestaña CER en memoria (sin cambios)."""
+    num    = hoja.title.upper().replace("CER", "").strip()
+    gid_in = hojas_in_ids.get(f"IN{num}")
+
+    res = {
+        "es_completo":       True,
+        "items_detalle":     [],
+        "cant_items":        0,
+        "fecha_inicio":      filas[4][12].strip() if len(filas) > 4 and len(filas[4]) > 12 else "",
+        "fecha_fin_estimada": filas[7][12].strip() if len(filas) > 7 and len(filas[7]) > 12 else "",
+        "resumen":           {},
+    }
+
+    t_oc = t_unid_acum = t_cant = t_imp_acum = 0.0
+    leyendo = False
+
+    for f in filas:
+        if len(f) > 2 and "TOTALES" in str(f[2]).upper():
+            break
+        if len(f) > 1 and "Items" in f[1]:
+            leyendo = True
+            continue
+
+        if leyendo and len(f) >= 17 and f[2].strip() and f[1].strip():
+            if f[10].strip() == "":
+                res["es_completo"] = False
+
+            res["items_detalle"].append({
+                "Item": f[1], "Denominacion": f[2], "Unidad": f[3],
+                "Cantidad": f[4], "Precio_Unitario": f[5], "Total": limpiar(f[6]),
+                "%Inc": limpiar(f[7]), "Cantidad_Anterior": f[8], "Cantidad_en_mes": f[9],
+                "Cantidad_acumulada": f[10], "Porcentaje_anterior": limpiar(f[11]),
+                "Porcentaje_en_mes": limpiar(f[12]), "Porcentaje_Acumulado": limpiar(f[13]),
+                "Importe_anterior": limpiar(f[14]), "Importe_en_mes": limpiar(f[15]),
+                "Importe_Acumulado": limpiar(f[16]), "Link_Drive": web_link,
+            })
+
+            t_oc       += limpiar(f[6])
+            t_unid_acum += limpiar(f[10])
+            t_imp_acum  += limpiar(f[16])
+            t_cant      += limpiar(f[4])
+            res["cant_items"] += 1
+
+    if res["cant_items"] > 0:
+        res["resumen"] = {
+            "certificado":       hoja.title,
+            "total_oc":          t_oc,
+            "total_unidad_acum": t_unid_acum,
+            "total_pct_acum":    round(t_unid_acum * 100 / t_cant, 2) if t_cant > 0 else 0.0,
+            "total_importe_acum": t_imp_acum,
+            "link_cer": f"https://docs.google.com/spreadsheets/d/{sheet_id}/edit#gid={hoja.id}",
+            "link_in":  f"https://docs.google.com/spreadsheets/d/{sheet_id}/edit#gid={gid_in}"
+                        if gid_in else None,
+        }
+
+    return res
+
+
+# ── OPTIMISATION 3: parallel file processing ────────────────────────────────
 def obtener_certificados():
+    todos_los_archivos = []
+    for carpeta_id in CARPETAS_RAIZ:
+        todos_los_archivos += listar_sheets_en_carpeta(carpeta_id)
+
     resultado = {}
 
-    for carpeta_id in CARPETAS_RAIZ:
-        archivos = listar_sheets_en_carpeta(carpeta_id)
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futuros = {
+            executor.submit(
+                procesar_archivo_completo, archivo["id"], archivo["link"]
+            ): archivo
+            for archivo in todos_los_archivos
+        }
 
-        for archivo in archivos:
-            oc = obtener_oc_del_archivo(archivo["id"])
-
-            if not oc or oc.upper().startswith("SP"):
-                continue
-
-            ultimo_cer = obtener_ultimo_cer_completo(archivo["id"])
-            if not ultimo_cer:
-                continue
-
-            resultado_cer = extraer_items_certificado(archivo["id"], ultimo_cer, archivo["link"])
-            historial_cer = obtener_resumen_todos_los_cer(archivo["id"])
-
-            resultado[oc] = {
-                "certificado":        ultimo_cer,
-                "items":              resultado_cer["items"],
-                "fecha_inicio":       resultado_cer["fecha_inicio"],
-                "fecha_fin_estimada": resultado_cer["fecha_fin_estimada"],
-                "historial_cer":      historial_cer,
-                "link":               archivo["link"]
-            }
-
-    return resultado
-    resultado = {}
-
-    for carpeta_id in CARPETAS_RAIZ:
-        archivos = listar_sheets_en_carpeta(carpeta_id)
-
-        for archivo in archivos:
-            oc = obtener_oc_del_archivo(archivo["id"])
-
-            if not oc or oc.upper().startswith("SP"):
-                continue
-
-            ultimo_cer = obtener_ultimo_cer_completo(archivo["id"])
-            if not ultimo_cer:
-                continue
-
-            resultado_cer = extraer_items_certificado(archivo["id"], ultimo_cer, archivo["link"])
-            historial_cer = obtener_resumen_todos_los_cer(archivo["id"])
-
-            resultado[oc] = {
-                "certificado":        ultimo_cer,
-                "items":              resultado_cer["items"],
-                "fecha_inicio":       resultado_cer["fecha_inicio"],
-                "fecha_fin_estimada": resultado_cer["fecha_fin_estimada"],
-                "historial_cer":      historial_cer,
-                "link":               archivo["link"]
-            }
+        for futuro in as_completed(futuros):
+            datos = futuro.result()
+            if datos:
+                oc, info = datos
+                resultado[oc] = info
 
     return resultado
