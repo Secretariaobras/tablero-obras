@@ -9,7 +9,9 @@ cliente_sheets = gspread.authorize(credenciales)
 
 CARPETAS_RAIZ = [
     "1EMjGkuUr588NX4Mgq46U1iCKyXDFJrvt",
-    "1vbTQLKwZQT_V7u5HKC0xUMKMm3GHOQrl"
+    "1vbTQLKwZQT_V7u5HKC0xUMKMm3GHOQrl",
+    "1Ab95Mi_TbJOLi7EXePpI6wJ8lkolh0AC",
+    "1NgoElSs76_23-6cuzkb7qhkdCJ3fVic-"
 ]
 
 # ── Rate-limit config ────────────────────────────────────────────────────────
