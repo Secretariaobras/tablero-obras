@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demarcación Horizontal - Tablero de Obras</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f8fafc; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+    <script>
+        function toggleHist(i) {
+            const row = document.getElementById('hist_' + i);
+            if(row.classList.contains('hidden')) {
+                row.classList.remove('hidden');
+            } else {
+                row.classList.add('hidden');
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-900 selection:bg-indigo-100">
+
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-10">
+        
+        <header class="mb-10 text-center">
+            <div class="inline-flex items-center justify-center p-3 bg-indigo-600 rounded-2xl shadow-lg shadow-indigo-200 mb-4">
+                <i data-lucide="hard-hat" class="text-white w-8 h-8"></i>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-800 mb-2">Demarcación Horizontal</h1>
+            <div class="inline-flex items-center gap-2 bg-slate-200/60 text-slate-600 px-4 py-1.5 rounded-full text-sm font-bold tracking-wider">
+                <i data-lucide="tag" class="w-4 h-4"></i> PM
+            </div>
+        </header>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-10">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm col-span-2 lg:col-span-1">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Presupuesto</div>
+                <div class="text-xl font-black text-slate-800">$93.8M</div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm col-span-2 lg:col-span-1 border-b-4 border-b-blue-500">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Adjudicado</div>
+                <div class="text-xl font-black text-blue-600">$93.8M</div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm col-span-2 lg:col-span-1 border-b-4 border-b-green-500">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Pagado</div>
+                <div class="text-xl font-black text-green-600">$0.0M</div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm col-span-2 lg:col-span-1">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Avance Financiero</div>
+                <div class="text-xl font-black text-indigo-600">0%</div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm col-span-2 md:col-span-4 lg:col-span-1">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Estado General</div>
+                <span class="px-2.5 py-1 rounded-md text-xs font-bold border bg-red-100 text-red-700 border-red-200">En Gestión</span>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm col-span-1">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Fecha Inicio</div>
+                <div class="text-sm font-bold text-slate-700 mt-1 flex items-center gap-1.5"><i data-lucide="calendar" class="w-4 h-4 text-slate-400"></i> 10/10/2025</div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm col-span-1">
+                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Fin Estimado</div>
+                <div class="text-sm font-bold text-slate-700 mt-1 flex items-center gap-1.5"><i data-lucide="calendar-check" class="w-4 h-4 text-slate-400"></i> 10/1/2026</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><i data-lucide="trending-up" class="w-5 h-5 text-indigo-500"></i> Evolución de Certificados</h2>
+                <div>                            <div id="0f54f30e-124c-4db5-97b9-85d18a9644ff" class="plotly-graph-div" style="height:350px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("0f54f30e-124c-4db5-97b9-85d18a9644ff")) {                    Plotly.newPlot(                        "0f54f30e-124c-4db5-97b9-85d18a9644ff",                        [{"hovertemplate":"\u003cb\u003e%{x}\u003c\u002fb\u003e\u003cbr\u003eImporte Mes: $%{y:,.0f}\u003cextra\u003e\u003c\u002fextra\u003e","line":{"width":2},"marker":{"size":10},"mode":"lines+markers+text","name":"3978_25","text":["$29,262,219","$34,943,394","$29,559,387"],"textposition":"top center","visible":true,"x":["Cer","Cer2","Cer3"],"y":[29262219.0,34943394.0,29559387.0],"type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"legend":{"title":{"text":"OC \u2014 clic para mostrar\u002focultar"},"orientation":"h","y":-0.2},"margin":{"l":20,"r":20,"t":40,"b":20},"title":{"text":"\ud83d\udcc8 Importe Ejecutado por Certificado"},"xaxis":{"title":{"text":"Certificado"}},"yaxis":{"title":{"text":"Importe del Mes ($)"}},"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","height":350},                        {"responsive": true}                    )                };            </script>        </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2"><i data-lucide="bar-chart-3" class="w-5 h-5 text-indigo-500"></i> Balance por Orden de Compra</h2>
+                <div>                            <div id="f06af794-19a3-4fb1-b191-3bee79fca252" class="plotly-graph-div" style="height:350px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("f06af794-19a3-4fb1-b191-3bee79fca252")) {                    Plotly.newPlot(                        "f06af794-19a3-4fb1-b191-3bee79fca252",                        [{"marker":{"color":"#3498db"},"name":"Adjudicado","opacity":0.5,"text":["$93,765,000"],"textposition":"outside","x":["3978_25"],"y":[93765000.0],"type":"bar"},{"marker":{"color":"#2ecc71"},"name":"Pagado","text":["$0"],"textposition":"outside","x":["3978_25"],"y":[0],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"legend":{"orientation":"h","y":-0.2},"margin":{"l":20,"r":20,"t":40,"b":20},"title":{"text":"\ud83d\udcb0 Avance Financiero por OC"},"barmode":"overlay","yaxis":{"title":{"text":"Monto ($)"}},"xaxis":{"title":{"text":"Orden de Compra"}},"plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","height":350},                        {"responsive": true}                    )                };            </script>        </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm mb-10">
+            <h2 class="text-lg font-bold text-slate-800 mb-6 flex items-center gap-2"><i data-lucide="list-checks" class="w-5 h-5 text-indigo-500"></i> Detalle de Órdenes de Compra</h2>
+            <div class="overflow-x-auto rounded-xl border border-slate-200 custom-scroll">
+                <table class="w-full text-left text-sm border-collapse">
+                    <thead class="bg-slate-50 text-slate-500 font-bold uppercase text-[10px] tracking-wider border-b border-slate-200">
+                        <tr>
+                            <th class="p-4">OC</th><th class="p-4">Proveedor</th><th class="p-4 text-right">Comprometido</th>
+                            <th class="p-4 text-right">Adjudicado</th><th class="p-4 text-right">Pagado</th><th class="p-4 text-center">% Fin</th>
+                            <th class="p-4">Estado</th><th class="p-4 text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        <tr class="hover:bg-slate-50 transition-colors border-b border-slate-100">
+            <td class="p-4 font-mono font-bold text-sm text-slate-700">3978_25</td>
+            <td class="p-4 text-sm font-medium">FEVIAL SA</td>
+            <td class="p-4 text-right font-semibold">$95,049,430</td>
+            <td class="p-4 text-right font-semibold text-blue-600">$93,765,000</td>
+            <td class="p-4 text-right font-semibold text-green-600">$0</td>
+            <td class="p-4 text-center font-black">0%</td>
+            <td class="p-4">
+                <span class="px-2.5 py-1.5 rounded-lg border text-[11px] font-bold inline-block max-w-[250px] whitespace-normal bg-amber-100 text-amber-700 border-amber-200">En Ejecución / Pendiente de Pago: Compras - Revision desde hace 7 días</span>
+            </td>
+            <td class="p-4 text-center"><button onclick="toggleHist(0)" class="px-3 py-1.5 bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-indigo-600 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-colors"><i data-lucide="history" class="w-4 h-4"></i> Ver CERs</button></td>
+        </tr>
+        
+            <tr id="hist_0" class="hidden bg-slate-50/80 border-b border-slate-200">
+                <td colspan="8" class="p-6">
+                    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                        <h6 class="text-sm font-bold text-slate-600 uppercase mb-4 flex items-center gap-2"><i data-lucide="file-spreadsheet" class="w-5 h-5 text-indigo-500"></i> Historial de Certificados — OC 3978_25</h6>
+                        <div class="overflow-x-auto rounded-lg border border-slate-100">
+                            <table class="w-full text-left text-xs whitespace-nowrap">
+                                <thead class="bg-slate-100 text-slate-500 uppercase font-bold tracking-wider">
+                                    <tr>
+                                        <th class="p-3">Certificado</th><th class="p-3">Total OC</th><th class="p-3">Unid. Acum</th>
+                                        <th class="p-3">% Acum</th><th class="p-3">Importe Acum</th><th class="p-3 text-center">CER</th><th class="p-3 text-center">Fotos IN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td class="p-3 font-medium">Cer</td>
+                    <td class="p-3">$93,765,000.00</td>
+                    <td class="p-3">713.73</td>
+                    <td class="p-3 font-bold">31.03%</td>
+                    <td class="p-3 text-indigo-700 font-bold">$29,262,219.00</td>
+                    <td class="p-3 text-center"><a href="https://docs.google.com/spreadsheets/d/136P6Y-n2mvasBzmSDcQ7WXUFPzr-nv807lEY4ZNu-as/edit#gid=1540249819" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">📄 CER</a></td>
+                    <td class="p-3 text-center"><a href="https://docs.google.com/spreadsheets/d/136P6Y-n2mvasBzmSDcQ7WXUFPzr-nv807lEY4ZNu-as/edit#gid=133477542" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">📸 Fotos</a></td>
+                </tr>
+                
+                <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td class="p-3 font-medium">Cer2</td>
+                    <td class="p-3">$93,765,000.00</td>
+                    <td class="p-3">1,559.71</td>
+                    <td class="p-3 font-bold">67.81%</td>
+                    <td class="p-3 text-indigo-700 font-bold">$64,205,613.00</td>
+                    <td class="p-3 text-center"><a href="https://docs.google.com/spreadsheets/d/136P6Y-n2mvasBzmSDcQ7WXUFPzr-nv807lEY4ZNu-as/edit#gid=1073423251" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">📄 CER</a></td>
+                    <td class="p-3 text-center"><a href="https://docs.google.com/spreadsheets/d/136P6Y-n2mvasBzmSDcQ7WXUFPzr-nv807lEY4ZNu-as/edit#gid=977273459" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">📸 Fotos</a></td>
+                </tr>
+                
+                <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td class="p-3 font-medium">Cer3</td>
+                    <td class="p-3">$93,765,000.00</td>
+                    <td class="p-3">2,300.00</td>
+                    <td class="p-3 font-bold">100.00%</td>
+                    <td class="p-3 text-indigo-700 font-bold">$93,765,000.00</td>
+                    <td class="p-3 text-center"><a href="https://docs.google.com/spreadsheets/d/136P6Y-n2mvasBzmSDcQ7WXUFPzr-nv807lEY4ZNu-as/edit#gid=663681742" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">📄 CER</a></td>
+                    <td class="p-3 text-center"><a href="https://docs.google.com/spreadsheets/d/136P6Y-n2mvasBzmSDcQ7WXUFPzr-nv807lEY4ZNu-as/edit#gid=1931706325" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">📸 Fotos</a></td>
+                </tr>
+                
+                <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td class="p-3 font-medium">Cer4</td>
+                    <td class="p-3">$93,765,000.00</td>
+                    <td class="p-3">0.00</td>
+                    <td class="p-3 font-bold">0.00%</td>
+                    <td class="p-3 text-indigo-700 font-bold">$0.00</td>
+                    <td class="p-3 text-center"><a href="https://docs.google.com/spreadsheets/d/136P6Y-n2mvasBzmSDcQ7WXUFPzr-nv807lEY4ZNu-as/edit#gid=530068451" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">📄 CER</a></td>
+                    <td class="p-3 text-center"><a href="https://docs.google.com/spreadsheets/d/136P6Y-n2mvasBzmSDcQ7WXUFPzr-nv807lEY4ZNu-as/edit#gid=1789599340" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold underline">📸 Fotos</a></td>
+                </tr>
+                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            
+        </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <h2 class="text-2xl font-extrabold text-slate-800 flex items-center gap-3">
+                <div class="bg-orange-100 p-2 rounded-lg"><i data-lucide="activity" class="w-6 h-6 text-orange-600"></i></div> 
+                Avance Físico de la Obra
+            </h2>
+        </div>
+        
+        
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm mb-8">
+                <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+                    <h5 class="font-bold text-slate-800 flex items-center gap-2 text-lg">
+                        <i data-lucide="wrench" class="w-6 h-6 text-orange-500"></i>
+                        Avance Físico Detallado: OC 3978_25
+                    </h5>
+                    <span class="text-[10px] font-bold text-slate-500 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg uppercase tracking-widest">Certificado: Cer3</span>
+                </div>
+                <div class="mb-6"><div>                            <div id="ea25e43a-cc19-4dca-a296-5dfcf5e3a92a" class="plotly-graph-div" style="height:350px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("ea25e43a-cc19-4dca-a296-5dfcf5e3a92a")) {                    Plotly.newPlot(                        "ea25e43a-cc19-4dca-a296-5dfcf5e3a92a",                        [{"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003eAnterior: %{x:.1f}%\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#cbd5e1"},"name":"Anterior","orientation":"h","text":["61.9%","76.9%"],"textposition":"inside","x":[61.86,76.9],"y":["\u00cdtem 1: Demarcaci\u00f3n Horizontal - DEMARCACI\u00d3N HOR","\u00cdtem 2: Demarcaci\u00f3n Horizontal - DEMARCACI\u00d3N HOR"],"type":"bar"},{"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003eEn Mes: %{x:.1f}%\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#60a5fa"},"name":"En Mes","orientation":"h","text":["38.1%","23.1%"],"textposition":"inside","x":[38.14,23.1],"y":["\u00cdtem 1: Demarcaci\u00f3n Horizontal - DEMARCACI\u00d3N HOR","\u00cdtem 2: Demarcaci\u00f3n Horizontal - DEMARCACI\u00d3N HOR"],"type":"bar"},{"hovertemplate":"\u003cb\u003e%{y}\u003c\u002fb\u003e\u003cbr\u003eAcumulado: %{x:.1f}%\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#818cf8"},"name":"Acumulado","orientation":"h","text":["100.0%","100.0%"],"textposition":"inside","x":[100.0,100.0],"y":["\u00cdtem 1: Demarcaci\u00f3n Horizontal - DEMARCACI\u00d3N HOR","\u00cdtem 2: Demarcaci\u00f3n Horizontal - DEMARCACI\u00d3N HOR"],"type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"title":{"text":"% Avance"},"range":[0,115]},"legend":{"orientation":"h","y":-0.15},"margin":{"l":10,"r":10,"t":10,"b":10},"title":{"text":""},"barmode":"group","plot_bgcolor":"rgba(0,0,0,0)","paper_bgcolor":"rgba(0,0,0,0)","height":350},                        {"responsive": true}                    )                };            </script>        </div></div>
+                
+                <h6 class="text-sm font-bold text-slate-500 uppercase mb-3 flex items-center gap-2"><i data-lucide="table-2" class="w-4 h-4"></i> Tabla de Ítems</h6>
+                <div class="overflow-x-auto rounded-xl border border-slate-200 bg-white custom-scroll shadow-sm">
+                    <table class="w-full text-left text-xs whitespace-nowrap">
+                        <thead class="bg-slate-50 text-slate-500 uppercase font-bold border-b border-slate-200 tracking-wider">
+                            <tr>
+                                <th class="p-4">#</th><th class="p-4">Denominación</th><th class="p-4 text-center">Und</th>
+                                <th class="p-4 text-right">Cant. Total</th><th class="p-4 text-right">P. Unit</th>
+                                <th class="p-4 text-right">Total $</th><th class="p-4 text-right">% Incidencia</th>
+                                <th class="p-4 text-right">Cant. Ant</th><th class="p-4 text-right">Cant. Mes</th><th class="p-4 text-right">Cant. Acum</th>
+                                <th class="p-4 text-right">% Ant</th><th class="p-4 text-right">% Mes</th><th class="p-4 text-right">% Acum</th>
+                                <th class="p-4 text-right">Imp. Ant</th><th class="p-4 text-right">Imp. Mes</th><th class="p-4 text-right">Imp. Acum</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td class="p-3 font-bold text-slate-400">1</td>
+                    <td class="p-3 font-medium max-w-[250px] truncate" title="Demarcación Horizontal - DEMARCACIÓN HORIZONTAL CON PINTURA TERMOPLÁSTICA REFLECTANTE APLICADA POR EXTRUSION MANUAL EN 3MM DE ESPERSOR (COLOR BLANCO) PARA SENDAS Y LÍNEAS DE FRENADO SEGÚN ESPECIFICACIONES TÉCNICAS Y NORMAS VIGENTES. INCLUYE REPLANTEO, PREMARCADO, BARRIDO SUPERFICIAL, PROVISIÓN Y APLICACION DE IMPRIMACION ACRILICA, SEMBRADO SUPERFICIAL CON MICROESFERAS DE VIDRIO (TIPO DROP-ON)">Demarcación Horizontal - DEMARCACIÓN HORIZONTAL CON PINTURA TERMOPLÁSTICA REFLECTANTE APLICADA POR EXTRUSION MANUAL EN 3MM DE ESPERSOR (COLOR BLANCO) PARA SENDAS Y LÍNEAS DE FRENADO SEGÚN ESPECIFICACIONES TÉCNICAS Y NORMAS VIGENTES. INCLUYE REPLANTEO, PREMARCADO, BARRIDO SUPERFICIAL, PROVISIÓN Y APLICACION DE IMPRIMACION ACRILICA, SEMBRADO SUPERFICIAL CON MICROESFERAS DE VIDRIO (TIPO DROP-ON)</td>
+                    <td class="p-3 text-center text-slate-500">M2</td>
+                    <td class="p-3 text-right">1,390.00</td>
+                    <td class="p-3 text-right text-slate-500">$37,800.00</td>
+                    <td class="p-3 text-right font-medium">$52,542,000.00</td>
+                    <td class="p-3 text-right text-indigo-600 font-bold">56.04%</td>
+                    <td class="p-3 text-right text-slate-400">859.90</td>
+                    <td class="p-3 text-right text-slate-500">530.10</td>
+                    <td class="p-3 text-right text-indigo-600 font-bold">1,390.00</td>
+                    <td class="p-3 text-right text-slate-400">61.9%</td>
+                    <td class="p-3 text-right text-slate-500">38.1%</td>
+                    <td class="p-3 text-right bg-indigo-50 font-bold text-indigo-700">100.0%</td>
+                    <td class="p-3 text-right text-slate-400">$32,504,220.00</td>
+                    <td class="p-3 text-right text-slate-500">$20,037,780.00</td>
+                    <td class="p-3 text-right font-bold text-slate-700">$52,542,000.00</td>
+                </tr>
+                
+                <tr class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td class="p-3 font-bold text-slate-400">2</td>
+                    <td class="p-3 font-medium max-w-[250px] truncate" title="Demarcación Horizontal - DEMARCACIÓN HORIZONTAL CON PINTURA TERMOPLÁSTICA REFLECTANTE APLICADA POR EXTRUSION MANUAL EN 3MM DE ESPERSOR (COLOR BLANCO Y AMARRILLO) PARA LÍNEAS DE BORDE, EJES Y DIVISORES DE CARRILES, SIMBOLOS, FLECHAS Y BOX DE ESTACIONAMIENTO SEGUN ESPECIFICACIONES TECNICAS Y NORMAS VIGENTES, INCLUYE REPLANTEO, PREMARCADO Y APLICACIÓN DE IMPRIMACION ACRILICA, SEMBRADO SUPERFICIAL CON MICROESFERAS DE VIDRIO (TIPO DROP ON)">Demarcación Horizontal - DEMARCACIÓN HORIZONTAL CON PINTURA TERMOPLÁSTICA REFLECTANTE APLICADA POR EXTRUSION MANUAL EN 3MM DE ESPERSOR (COLOR BLANCO Y AMARRILLO) PARA LÍNEAS DE BORDE, EJES Y DIVISORES DE CARRILES, SIMBOLOS, FLECHAS Y BOX DE ESTACIONAMIENTO SEGUN ESPECIFICACIONES TECNICAS Y NORMAS VIGENTES, INCLUYE REPLANTEO, PREMARCADO Y APLICACIÓN DE IMPRIMACION ACRILICA, SEMBRADO SUPERFICIAL CON MICROESFERAS DE VIDRIO (TIPO DROP ON)</td>
+                    <td class="p-3 text-center text-slate-500">M2</td>
+                    <td class="p-3 text-right">910.00</td>
+                    <td class="p-3 text-right text-slate-500">$45,300.00</td>
+                    <td class="p-3 text-right font-medium">$41,223,000.00</td>
+                    <td class="p-3 text-right text-indigo-600 font-bold">43.96%</td>
+                    <td class="p-3 text-right text-slate-400">699.81</td>
+                    <td class="p-3 text-right text-slate-500">210.19</td>
+                    <td class="p-3 text-right text-indigo-600 font-bold">910.00</td>
+                    <td class="p-3 text-right text-slate-400">76.9%</td>
+                    <td class="p-3 text-right text-slate-500">23.1%</td>
+                    <td class="p-3 text-right bg-indigo-50 font-bold text-indigo-700">100.0%</td>
+                    <td class="p-3 text-right text-slate-400">$31,701,393.00</td>
+                    <td class="p-3 text-right text-slate-500">$9,521,607.00</td>
+                    <td class="p-3 text-right font-bold text-slate-700">$41,223,000.00</td>
+                </tr>
+                </tbody>
+                    </table>
+                </div>
+            </div>
+            
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
