@@ -1,9 +1,31 @@
 import gspread
+import time
 from autentificacion import credenciales
 import pandas as pd
 
 cliente_sheets = gspread.authorize(credenciales)
 ID_TABLERO = "14zgEM2DLgK92DLNE8vn7SUGTWi4qd1L_LxzdtFcCcO0"
+
+# ── Retry config ─────────────────────────────────────────────────────────────
+MAX_RETRIES  = 5
+BACKOFF_BASE = 2  # segundos; se duplica en cada reintento
+# ─────────────────────────────────────────────────────────────────────────────
+
+def con_reintentos(fn, *args, **kwargs):
+    """Llama a fn(*args, **kwargs) con backoff exponencial si hay error de cuota."""
+    for intento in range(MAX_RETRIES):
+        try:
+            return fn(*args, **kwargs)
+        except gspread.exceptions.APIError as e:
+            codigo = e.response.status_code
+            if codigo in (429, 500, 503) and intento < MAX_RETRIES - 1:
+                espera = BACKOFF_BASE * (2 ** intento)
+                print(f"  ⏳ [{codigo}] Cuota/error transitorio – reintentando en {espera:.0f}s… (intento {intento + 1}/{MAX_RETRIES})")
+                time.sleep(espera)
+            else:
+                raise
+    return None
+
 
 def limpiar_moneda(columna):
     return (
@@ -16,11 +38,13 @@ def limpiar_moneda(columna):
         .astype(float)
     )
 
+
 def obtener_datos_tablero():
-    tablero = cliente_sheets.open_by_key(ID_TABLERO)
-    df_suministro  = pd.DataFrame(tablero.worksheet("dato_suministro").get_all_records())
-    df_pagos       = pd.DataFrame(tablero.worksheet("dato_pagos").get_all_records())
-    df_presupuesto = pd.DataFrame(tablero.worksheet("dato_presupuesto").get_all_records())
+    tablero = con_reintentos(cliente_sheets.open_by_key, ID_TABLERO)
+
+    df_suministro  = pd.DataFrame(con_reintentos(tablero.worksheet("dato_suministro").get_all_records))
+    df_pagos       = pd.DataFrame(con_reintentos(tablero.worksheet("dato_pagos").get_all_records))
+    df_presupuesto = pd.DataFrame(con_reintentos(tablero.worksheet("dato_presupuesto").get_all_records))
 
     col_monto       = df_pagos.columns[13]
     col_id          = df_pagos.columns[3]

@@ -20,7 +20,7 @@ jobs:
 
       - name: Instalar dependencias
         run: |
-          pip install gspread google-auth google-api-python-client pandas plotly notion-client python-dotenv
+          pip install gspread google-auth google-api-python-client pandas plotly python-dotenv
 
       - name: Crear archivo de credenciales Google
         run: |
@@ -29,14 +29,33 @@ jobs:
       - name: Crear archivo .env
         run: |
           echo "RUTA_GOOGLE_JSON=credenciales_google.json" >> .env
-          echo "NOTION_TOKEN=${{ secrets.NOTION_TOKEN }}" >> .env
-          echo "NOTION_DATABASE_ID=313ff6ea13e3808b8c52c6a56c6b7a97" >> .env
+
+      # ── Restaurar caché de certificados del run anterior ──────────────────
+      - name: Restaurar caché de certificados
+        uses: actions/cache@v3
+        with:
+          path: cache_certificados.json
+          key: cache-certificados-${{ runner.os }}
+          restore-keys: |
+            cache-certificados-
+
+      # ── Poblar caché (solo procesa archivos nuevos/modificados) ───────────
+      - name: Poblar caché de certificados
+        run: python poblar_cache.py
 
       - name: Construir tablero
         run: python construir_tablero.py
 
       - name: Generar dashboards HTML
         run: python generar_dashboard.py
+
+      # ── Guardar caché actualizado para el próximo run ─────────────────────
+      - name: Guardar caché de certificados
+        uses: actions/cache/save@v3
+        if: always()
+        with:
+          path: cache_certificados.json
+          key: cache-certificados-${{ runner.os }}-${{ github.run_id }}
 
       - name: Publicar en GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
