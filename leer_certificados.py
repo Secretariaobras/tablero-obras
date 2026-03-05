@@ -182,7 +182,7 @@ def analizar_hoja_cer(filas, hoja, sheet_id, hojas_in_ids, web_link):
         "resumen":            {},
     }
 
-    t_oc = t_unid_acum = t_cant = t_imp_acum = 0.0
+    t_oc = t_unid_acum = t_cant = t_imp_acum = t_imp_mes = 0.0
     leyendo = False
 
     for f in filas:
@@ -207,6 +207,7 @@ def analizar_hoja_cer(filas, hoja, sheet_id, hojas_in_ids, web_link):
             })
             t_oc        += limpiar(f[6])
             t_unid_acum += limpiar(f[10])
+            t_imp_mes   += limpiar(f[15])
             t_imp_acum  += limpiar(f[16])
             t_cant      += limpiar(f[4])
             res["cant_items"] += 1
@@ -217,6 +218,7 @@ def analizar_hoja_cer(filas, hoja, sheet_id, hojas_in_ids, web_link):
             "total_oc":           t_oc,
             "total_unidad_acum":  t_unid_acum,
             "total_pct_acum":     round(t_unid_acum * 100 / t_cant, 2) if t_cant > 0 else 0.0,
+            "total_importe_mes":  t_imp_mes,
             "total_importe_acum": t_imp_acum,
             "link_cer": f"https://docs.google.com/spreadsheets/d/{sheet_id}/edit#gid={hoja.id}",
             "link_in":  f"https://docs.google.com/spreadsheets/d/{sheet_id}/edit#gid={gid_in}"
