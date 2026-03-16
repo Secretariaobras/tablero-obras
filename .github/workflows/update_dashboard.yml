@@ -2,13 +2,12 @@ name: Actualizar Tablero de Obras
 
 on:
   schedule:
-    - cron: '0 11,13,15,17,19 * * 1-5'  # 8, 10, 12, 14, 16hs Argentina (UTC-3) de lunes a viernes
-  workflow_dispatch:      # También permite correrlo manualmente desde GitHub
+    - cron: '0 11,13,15,17,19 * * 1-5'
+  workflow_dispatch:
 
 jobs:
   actualizar:
     runs-on: ubuntu-latest
-
     steps:
       - name: Clonar repositorio
         uses: actions/checkout@v3
@@ -19,37 +18,27 @@ jobs:
           python-version: '3.11'
 
       - name: Instalar dependencias
-        run: |
-          pip install gspread google-auth google-api-python-client pandas plotly python-dotenv
+        run: pip install gspread google-auth google-api-python-client pandas python-dotenv
 
       - name: Crear archivo de credenciales Google
-        run: |
-          echo '${{ secrets.GOOGLE_CREDENTIALS_JSON }}' > credenciales_google.json
+        run: echo '${{ secrets.GOOGLE_CREDENTIALS_JSON }}' > credenciales_google.json
 
       - name: Crear archivo .env
-        run: |
-          echo "RUTA_GOOGLE_JSON=credenciales_google.json" >> .env
+        run: echo "RUTA_GOOGLE_JSON=credenciales_google.json" >> .env
 
-      # ── Restaurar caché de certificados del run anterior ──────────────────
       - name: Restaurar caché de certificados
         uses: actions/cache@v3
         with:
           path: cache_certificados.json
           key: cache-certificados-${{ runner.os }}
-          restore-keys: |
-            cache-certificados-
+          restore-keys: cache-certificados-
 
-      # ── Poblar caché (solo procesa archivos nuevos/modificados) ───────────
       - name: Poblar caché de certificados
-        run: python poblar_cache.py --forzar
+        run: python poblar_cache.py
 
       - name: Construir tablero
         run: python construir_tablero.py
 
-      - name: Generar dashboards HTML
-        run: python generar_dashboard.py
-
-      # ── Guardar caché actualizado para el próximo run ─────────────────────
       - name: Guardar caché de certificados
         uses: actions/cache/save@v3
         if: always()
@@ -57,9 +46,15 @@ jobs:
           path: cache_certificados.json
           key: cache-certificados-${{ runner.os }}-${{ github.run_id }}
 
+      - name: Preparar archivos para publicar
+        run: |
+          mkdir -p public
+          cp tablero.json public/
+          cp index.html public/
+
       - name: Publicar en GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dashboards
           publish_branch: gh-pages
+          publish_dir: ./public
