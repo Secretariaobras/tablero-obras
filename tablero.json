@@ -1,7 +1,7 @@
 [
   {
     "cat_programatica": "OBR100",
-    "nombre_proyecto": "(OBR100) Ampliacion de orden de compra 1734/25 - OBRA Belgrano",
+    "nombre_proyecto": "",
     "presupuesto": "$53,013,665.00",
     "ocs": [
       {
@@ -25,7 +25,7 @@
   },
   {
     "cat_programatica": "OBR103",
-    "nombre_proyecto": "Copia de 2025/5170 (OBR103) \"CARPETA ASFALTICA EN DISTINTAS CALLES DEL DISTRITO ETAPA II\"",
+    "nombre_proyecto": "",
     "presupuesto": "$1,999,988,750.00",
     "ocs": [
       {
@@ -66,7 +66,7 @@
   },
   {
     "cat_programatica": "OBR104",
-    "nombre_proyecto": "Copia 5993 - (OBR104) Ampliacion OC 642/25 - OBRA: Apertura chapeauroge entre paraguay y jujuy",
+    "nombre_proyecto": "",
     "presupuesto": "$49,644,000.00",
     "ocs": [
       {
@@ -107,7 +107,7 @@
   },
   {
     "cat_programatica": "OBR105",
-    "nombre_proyecto": "Provisión e instalación de vinilos para identificación de refugios de espera de transporte público ubicados en la zona céntrica del Partido de San Miguel",
+    "nombre_proyecto": "",
     "presupuesto": "$392,180,866.00",
     "ocs": [
       {
@@ -148,7 +148,7 @@
   },
   {
     "cat_programatica": "OBR106",
-    "nombre_proyecto": "(OBR106) Ciudad judicial etapa III",
+    "nombre_proyecto": "",
     "presupuesto": "$1,261,621,000.00",
     "ocs": [
       {
@@ -189,7 +189,7 @@
   },
   {
     "cat_programatica": "OBR107",
-    "nombre_proyecto": "(OBR107) Busco ramal sur",
+    "nombre_proyecto": "",
     "presupuesto": "$5,578,190,000.00",
     "ocs": [
       {
@@ -213,7 +213,7 @@
   },
   {
     "cat_programatica": "OBR108",
-    "nombre_proyecto": "(OBR60) \"Apertura Chapeaurouge entre Paraguay y Jujuy\"",
+    "nombre_proyecto": "",
     "presupuesto": "$169,824,000.00",
     "ocs": [
       {
@@ -254,7 +254,7 @@
   },
   {
     "cat_programatica": "OBR109",
-    "nombre_proyecto": "Copia 5670 - (OBR109) Provision de H8 y H30 para realizar pavimentos por administracion (ejercicio 2026)",
+    "nombre_proyecto": "",
     "presupuesto": "$1,869,516,380.00",
     "ocs": [
       {
@@ -295,7 +295,7 @@
   },
   {
     "cat_programatica": "OBR110",
-    "nombre_proyecto": "(OBR110) (V126E) Hidraulica montevideo y bourdet ",
+    "nombre_proyecto": "",
     "presupuesto": "$109,580,842.65",
     "ocs": [
       {
@@ -500,7 +500,7 @@
   },
   {
     "cat_programatica": "OBR51",
-    "nombre_proyecto": "Proyecto de parquizacion con mano de obra en boulevard santa fe - plaza sma - hospital san miguel - ruta 8 (pardo hasta sourdeaux) ",
+    "nombre_proyecto": "",
     "presupuesto": "$32,268,095.00",
     "ocs": [
       {
@@ -1274,7 +1274,7 @@
   },
   {
     "cat_programatica": "OBR67",
-    "nombre_proyecto": "(OBR67) Obra: Hospital Larcade.",
+    "nombre_proyecto": "",
     "presupuesto": "$4,302,564,929.00",
     "ocs": [
       {
@@ -1332,7 +1332,7 @@
   },
   {
     "cat_programatica": "OBR68",
-    "nombre_proyecto": "(OBR68) Obra: \"Puesto de seguridad y baños en el corredor francia\"",
+    "nombre_proyecto": "",
     "presupuesto": "$139,000,000.00",
     "ocs": [
       {
@@ -1373,7 +1373,7 @@
   },
   {
     "cat_programatica": "OBR69",
-    "nombre_proyecto": "(OBR69) OBRA: Belgrano",
+    "nombre_proyecto": "",
     "presupuesto": "$276,147,984.92",
     "ocs": [
       {
@@ -1414,7 +1414,7 @@
   },
   {
     "cat_programatica": "OBR70",
-    "nombre_proyecto": "(OBR70) OBRA: Mano de obra y materiales acceso gaspar campos",
+    "nombre_proyecto": "",
     "presupuesto": "$594,659,200.00",
     "ocs": [
       {
@@ -1425,7 +1425,7 @@
         "pagado": 489253013.7,
         "redeterminado": 0,
         "porcentaje": 0.8227452189422109,
-        "estado": "En Ejecución / Pendiente de Pago: Privada - Firmar OP desde hace 39 días",
+        "estado": "En Ejecución / Pendiente de Pago: Tesorería - Para pagar desde hace 39 días",
         "Plazo entre OC y SP": 197,
         "certificado": null,
         "fecha_inicio": "",
@@ -1455,7 +1455,7 @@
   },
   {
     "cat_programatica": "OBR72",
-    "nombre_proyecto": "(OBR72) OBRA: Pavimentos asfalticos con cordon cuneta ",
+    "nombre_proyecto": "",
     "presupuesto": "$1,960,904,330.00",
     "ocs": [
       {
@@ -1479,7 +1479,7 @@
   },
   {
     "cat_programatica": "OBR74",
-    "nombre_proyecto": "(OBR74) Reparacion de paseo san miguel - reparacion de veredas deterioradas en el paseo san miguel ",
+    "nombre_proyecto": "",
     "presupuesto": "$82,000,000.00",
     "ocs": [
       {
@@ -1503,7 +1503,7 @@
   },
   {
     "cat_programatica": "OBR75",
-    "nombre_proyecto": "(OBR75) Intervencion de veredas en bella vista ",
+    "nombre_proyecto": "",
     "presupuesto": "$273,706,800.00",
     "ocs": [
       {
@@ -1544,7 +1544,7 @@
   },
   {
     "cat_programatica": "OBR76",
-    "nombre_proyecto": "(OBR76) REPARACION CLUB INDIOS ",
+    "nombre_proyecto": "",
     "presupuesto": "$14,300,000.00",
     "ocs": [
       {
@@ -1568,7 +1568,7 @@
   },
   {
     "cat_programatica": "OBR77",
-    "nombre_proyecto": "(OBR77) Alquiler de pala WA200 (incluy operario, combustible, seguros, equipos) para limpieza de barrio madre esperanza ",
+    "nombre_proyecto": "",
     "presupuesto": "$38,500,000.00",
     "ocs": [
       {
@@ -1592,7 +1592,7 @@
   },
   {
     "cat_programatica": "OBR78",
-    "nombre_proyecto": "(OBR78) - \"Hidraulica barrio mitre\"",
+    "nombre_proyecto": "",
     "presupuesto": "$810,919,138.00",
     "ocs": [
       {
@@ -1616,7 +1616,7 @@
   },
   {
     "cat_programatica": "OBR79",
-    "nombre_proyecto": "(OBR79) - \"Puesta en valor del estacionamiento / subsuelo del palacio municipal\"",
+    "nombre_proyecto": "",
     "presupuesto": "$37,975,000.00",
     "ocs": [
       {
@@ -1640,7 +1640,7 @@
   },
   {
     "cat_programatica": "OBR80-01",
-    "nombre_proyecto": "(OBR80-01) Contratacion de \"consultoria para anteproyecto de la pista deportiva\" y masterplan ",
+    "nombre_proyecto": "",
     "presupuesto": "$15,400,000.00",
     "ocs": [
       {
@@ -1664,7 +1664,7 @@
   },
   {
     "cat_programatica": "OBR81",
-    "nombre_proyecto": "(OBR81) Obra \"Remodelacion casona de Pardo\"",
+    "nombre_proyecto": "",
     "presupuesto": "$131,155,000.00",
     "ocs": [
       {
@@ -1688,7 +1688,7 @@
   },
   {
     "cat_programatica": "OBR82",
-    "nombre_proyecto": "(OBR82) Alquiler de retroexcavadora hyundai 210",
+    "nombre_proyecto": "",
     "presupuesto": "$19,900,000.00",
     "ocs": [
       {
@@ -1712,7 +1712,7 @@
   },
   {
     "cat_programatica": "OBR83",
-    "nombre_proyecto": "(OBR83) Provision y colocacion de ejemplares arboreos en diversos espacios publicos del partido de san miguel. Los arboles seran plantados conforme a las especificaciones tecnicas correspondientes, incluyendo la utilizacion de cubremonte, la colocacion de dos tutores por ejemplar y la sujecion mediante hilo tipo espagueti. los sitios propuestos para la realizacion de las tareas mencionadas son los siguientes: calle gaspar campos, entre rio segundo y arricau - ruta 8 entre balbin y lebensohn - defensa entre obligado y chapeaurouge - jose lopez entre obligado y chapeaurouge - sebastian gaboto entre sourdeaux e irusta - puesto policial + los berros entre defensa y chapeaurouge - la plata ente chapeaurouge y gaboto - chapearouge entre pardo e irusta - tribulato entre illia y peron - santa fe entre pardo y uriarte - plaza indios - plaza bomberos",
+    "nombre_proyecto": "",
     "presupuesto": "$85,525,825.00",
     "ocs": [
       {
@@ -1787,7 +1787,7 @@
   },
   {
     "cat_programatica": "OBR84",
-    "nombre_proyecto": "(OBR84) \"Repavimentacion de Av Gaspar Campos\"",
+    "nombre_proyecto": "",
     "presupuesto": "$1,295,627,448.40",
     "ocs": [
       {
@@ -1811,7 +1811,7 @@
   },
   {
     "cat_programatica": "OBR87",
-    "nombre_proyecto": "Ampliacion de orden de compra 4458/24 destinada a obra de \"Bacheo en principales calles de asfalto\".(OBR87)",
+    "nombre_proyecto": "",
     "presupuesto": "$264,614,762.00",
     "ocs": [
       {
@@ -1852,7 +1852,7 @@
   },
   {
     "cat_programatica": "OBR88",
-    "nombre_proyecto": "(OBR88) Renovación corredor aeróbico - Francia entre Pardo y Conesa.",
+    "nombre_proyecto": "",
     "presupuesto": "$851,382,695.37",
     "ocs": [
       {
@@ -2563,7 +2563,7 @@
   },
   {
     "cat_programatica": "OBR90",
-    "nombre_proyecto": "(OBR90) P.A.N. - Pasos a nivel de Salerno y Lebensohn.",
+    "nombre_proyecto": "",
     "presupuesto": "$2,525,412,112.00",
     "ocs": [
       {
@@ -2587,7 +2587,7 @@
   },
   {
     "cat_programatica": "OBR91",
-    "nombre_proyecto": "(OBR91) Carpeta asfaltica en distintas calles del partido ",
+    "nombre_proyecto": "",
     "presupuesto": "$2,000,000,000.00",
     "ocs": [
       {
@@ -2611,7 +2611,7 @@
   },
   {
     "cat_programatica": "OBR92",
-    "nombre_proyecto": "(OBR92) - Adquisicion de H30, H21, H8 para realizar pavimentos por administracion",
+    "nombre_proyecto": "",
     "presupuesto": "$529,780,350.00",
     "ocs": [
       {
@@ -2686,7 +2686,7 @@
   },
   {
     "cat_programatica": "OBR92-01",
-    "nombre_proyecto": "(OBR92-01) Mano de obra para ejecucion de pavimentos por administracion",
+    "nombre_proyecto": "",
     "presupuesto": "$298,000,000.00",
     "ocs": [
       {
@@ -2727,7 +2727,7 @@
   },
   {
     "cat_programatica": "OBR93",
-    "nombre_proyecto": "Copia 3729/25 - (OBR93) Obra: \"Pavimento de hormigon etapa II\"",
+    "nombre_proyecto": "",
     "presupuesto": "$2,205,072,000.00",
     "ocs": [
       {
@@ -2768,7 +2768,7 @@
   },
   {
     "cat_programatica": "OBR94",
-    "nombre_proyecto": "Copia 3730 - (OBR94) Obra: \"Pavimentos asfalticos con cordon cuneta etapa II\"",
+    "nombre_proyecto": "",
     "presupuesto": "$2,954,870,734.00",
     "ocs": [
       {
@@ -2809,7 +2809,7 @@
   },
   {
     "cat_programatica": "OBR96",
-    "nombre_proyecto": "(OBR96) Hidraulica y pavimento san juan ",
+    "nombre_proyecto": "",
     "presupuesto": "$493,829,275.24",
     "ocs": [
       {
@@ -2833,7 +2833,7 @@
   },
   {
     "cat_programatica": "OBR97",
-    "nombre_proyecto": "Copia de 2025/4487 - OBR97: Obra de renovacion de plazas: Juan Domingo Peron - 17 de octubre - 4 Heroes de Malvinas - Mu",
+    "nombre_proyecto": "",
     "presupuesto": "$1,778,879,460.92",
     "ocs": [
       {
@@ -2857,7 +2857,7 @@
   },
   {
     "cat_programatica": "OBR98",
-    "nombre_proyecto": "Copia 4624 - (OBR98) Veredas en centros comerciales ",
+    "nombre_proyecto": "",
     "presupuesto": "$595,872,000.00",
     "ocs": [
       {
@@ -3068,7 +3068,7 @@
   },
   {
     "cat_programatica": "OBR99",
-    "nombre_proyecto": "Copia 4263 - (OBR99) Obra hidraulica de araucano y defensa ",
+    "nombre_proyecto": "",
     "presupuesto": "$406,959,782.68",
     "ocs": [
       {
