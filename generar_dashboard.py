@@ -287,10 +287,6 @@ for proyecto in tablero:
                 <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Pagado</div>
                 <div class="text-xl font-black text-green-600">${pago_total/1_000_000:.1f}M</div>
             </div>
-            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm col-span-2 lg:col-span-1">
-                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Avance Financiero</div>
-                <div class="text-xl font-black text-indigo-600">{pct_fin:.0f}%</div>
-            </div>
             <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm col-span-2 md:col-span-4 lg:col-span-1">
                 <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Estado General</div>
                 <span class="px-2.5 py-1 rounded-md text-xs font-bold border {estado_clase}">{estado}</span>
@@ -350,7 +346,8 @@ for proyecto in tablero:
 </html>
 """
 
-    nombre_archivo = nombre.replace(" ", "_").replace("/", "-")[:50]
+    # Limpiamos caracteres que Windows no acepta en los nombres de archivo
+    nombre_archivo = nombre.replace(" ", "_").replace("/", "-").replace('"', '').replace(':', '').replace('?', '')[:50]
     ruta = f"dashboards/{cat}_{nombre_archivo}.html"
     with open(ruta, "w", encoding="utf-8") as f:
         f.write(html)

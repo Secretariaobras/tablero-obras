@@ -121,20 +121,28 @@ def procesar_archivo_completo(sheet_id, web_link):
             [h for h in todas_hojas if h.title.upper().startswith("CER")],
             key=lambda h: _extraer_numero(h.title)
         )
-        hojas_in_ids = {
-            h.title.upper(): h.id
-            for h in todas_hojas if h.title.upper().startswith("IN")
-        }
+        hojas_in_objs = sorted(
+            [h for h in todas_hojas if h.title.upper().startswith("IN")],
+            key=lambda h: _extraer_numero(h.title.upper().replace("IN", ""))
+        )
+        hojas_in_ids = {h.title.upper(): h.id for h in hojas_in_objs}
 
-        hojas_a_leer = ([hoja_oc_obj] if hoja_oc_obj else []) + hojas_cer_objs
+        hojas_a_leer = ([hoja_oc_obj] if hoja_oc_obj else []) + hojas_cer_objs + hojas_in_objs
         datos_batch  = _fetch_todas_las_filas(ss, hojas_a_leer)
 
-        oc = None
+        oc          = None
+        descripcion = ""
+        inspector   = ""
         if hoja_oc_obj:
             filas_oc = datos_batch.get("Procesar OC", [])
-            val_b2   = filas_oc[1][1] if len(filas_oc) > 1 and len(filas_oc[1]) > 1 else None
+            # B2 → ID de OC
+            val_b2 = filas_oc[1][1] if len(filas_oc) > 1 and len(filas_oc[1]) > 1 else None
             if val_b2:
                 oc = val_b2.replace("/", "_").strip()
+            # B1 → Descripción del proyecto
+            descripcion = filas_oc[0][1].strip() if len(filas_oc) > 0 and len(filas_oc[0]) > 1 else ""
+            # B12 → Inspector de obra
+            inspector   = filas_oc[11][1].strip() if len(filas_oc) > 11 and len(filas_oc[11]) > 1 else ""
 
         if not oc or oc.upper().startswith("SP"):
             return None
@@ -146,7 +154,7 @@ def procesar_archivo_completo(sheet_id, web_link):
             filas = datos_batch.get(hoja.title, [])
             if not filas:
                 continue
-            res = analizar_hoja_cer(filas, hoja, sheet_id, hojas_in_ids, web_link)
+            res = analizar_hoja_cer(filas, hoja, sheet_id, hojas_in_ids, web_link, datos_batch)
             if res["cant_items"] > 0:
                 historial_cer.append(res["resumen"])
                 if res["es_completo"]:
@@ -162,16 +170,23 @@ def procesar_archivo_completo(sheet_id, web_link):
         if not ultimo_completo_data:
             return None
 
-        return oc, {**ultimo_completo_data, "historial_cer": historial_cer, "link": web_link}
+        return oc, {**ultimo_completo_data, "historial_cer": historial_cer, "link": web_link, "descripcion": descripcion, "inspector": inspector}
 
     except Exception as e:
         print(f"  ⚠️  Error procesando {sheet_id}: {e}")
         return None
 
 
-def analizar_hoja_cer(filas, hoja, sheet_id, hojas_in_ids, web_link):
+def analizar_hoja_cer(filas, hoja, sheet_id, hojas_in_ids, web_link, datos_batch={}):
     num    = hoja.title.upper().replace("CER", "").strip()
     gid_in = hojas_in_ids.get(f"IN{num}")
+
+    # Leer fotos de la hoja IN (col A=nombre, col B=link) — solo filas con "Foto" en nombre
+    fotos = []
+    filas_in = datos_batch.get(f"IN{num}", [])
+    for fila in filas_in:
+        if len(fila) >= 2 and "foto" in fila[0].strip().lower() and fila[1].strip():
+            fotos.append({"nombre": fila[0].strip(), "link": fila[1].strip()})
 
     res = {
         "es_completo":        True,
@@ -217,9 +232,10 @@ def analizar_hoja_cer(filas, hoja, sheet_id, hojas_in_ids, web_link):
             "certificado":        hoja.title,
             "total_oc":           t_oc,
             "total_unidad_acum":  t_unid_acum,
-            "total_pct_acum":     round(t_unid_acum * 100 / t_cant, 2) if t_cant > 0 else 0.0,
+            "total_pct_acum": round((t_imp_acum / t_oc) * 100, 2) if t_oc > 0 else 0.0,
             "total_importe_mes":  t_imp_mes,
             "total_importe_acum": t_imp_acum,
+            "fotos":    fotos,
             "link_cer": f"https://docs.google.com/spreadsheets/d/{sheet_id}/edit#gid={hoja.id}",
             "link_in":  f"https://docs.google.com/spreadsheets/d/{sheet_id}/edit#gid={gid_in}"
                         if gid_in else None,

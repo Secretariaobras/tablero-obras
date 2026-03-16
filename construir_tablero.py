@@ -4,7 +4,7 @@ from calcular_estado import calcular_estado
 import json
 
 def construir_tablero():
-    df_resultado, df_suministro, df_pagos, dict_total_pagado, dict_ultimo_estado = obtener_datos_tablero()
+    df_resultado, df_suministro, df_pagos, dict_total_pagado, dict_ultimo_estado, dict_redeterminaciones= obtener_datos_tablero()
     certificados = obtener_certificados()
 
     tablero = []
@@ -21,6 +21,8 @@ def construir_tablero():
             oc         = row["ID UNICO"]
             adjudicado = row["Monto adjudicado"]
             pago       = dict_total_pagado.get(oc, 0)
+            redeterminacion = dict_redeterminaciones.get(oc,0)
+            plazo = int(row.get("plazo_oc_sp", 0))
             porcentaje = (pago / adjudicado) if adjudicado > 0 else 0
             estado     = calcular_estado(oc, porcentaje, adjudicado, df_suministro, df_pagos)
             datos_cer  = certificados.get(oc)
@@ -31,8 +33,10 @@ def construir_tablero():
                 "comprometido":       row["Monto comprometido"],
                 "adjudicado":         adjudicado,
                 "pagado":             pago,
+                "redeterminado":      redeterminacion,
                 "porcentaje":         porcentaje,
                 "estado":             estado,
+                "Plazo entre OC y SP":plazo,
                 "certificado":        datos_cer["certificado"]        if datos_cer else None,
                 "fecha_inicio":       datos_cer["fecha_inicio"]       if datos_cer else "",
                 "fecha_fin_estimada": datos_cer["fecha_fin_estimada"] if datos_cer else "",

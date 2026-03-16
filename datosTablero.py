@@ -51,17 +51,30 @@ def obtener_datos_tablero():
     col_orden       = df_pagos.columns[14]
     col_estado_pago = df_pagos.columns[22]
     col_estado_z    = df_pagos.columns[25]
+    col_info_recepcion = df_pagos.columns[6]
+    col_f_oc = df_suministro.columns[2]
+    col_f_sp= df_suministro.columns[4]
 
     df_pagos[col_monto] = limpiar_moneda(df_pagos[col_monto])
 
     df_presupuesto_limpio = df_presupuesto[df_presupuesto["Cat Programatica"] != ""].copy()
+    f_oc_dt = pd.to_datetime(df_suministro[col_f_oc], dayfirst=True, errors='coerce')
+    f_sp_dt = pd.to_datetime(df_suministro[col_f_sp], dayfirst=True, errors='coerce')
+    diferencia_dias = (f_oc_dt - f_sp_dt).dt.days
+
+    df_suministro["plazo_oc_sp"] = diferencia_dias.fillna(0).clip(lower=0).astype(int)
     df_resultado = pd.merge(df_presupuesto_limpio, df_suministro, left_on="Cat Programatica", right_on="OBR")
 
     df_resultado["Monto comprometido"] = limpiar_moneda(df_resultado["Monto comprometido"])
     df_resultado["Monto adjudicado"]   = limpiar_moneda(df_resultado["Monto adjudicado"])
 
     df_pagos_ordenado  = df_pagos.sort_values(by=[col_id, col_orden], ascending=[True, True])
-    dict_total_pagado  = df_pagos[df_pagos[col_estado_pago] == "PAGO"].groupby(col_id)[col_monto].sum().to_dict()
+    dict_total_pagado  = df_pagos[(df_pagos[col_estado_pago] == "PAGO") &
+                                   (df_pagos[col_info_recepcion]!= "RED")
+                                   ].groupby(col_id)[col_monto].sum().to_dict()
     dict_ultimo_estado = df_pagos_ordenado.groupby(col_id)[col_estado_z].last().to_dict()
+    dict_redeterminaciones=df_pagos[(df_pagos[col_estado_pago] == "PAGO") &
+                                   (df_pagos[col_info_recepcion]== "RED")
+                                   ].groupby(col_id)[col_monto].sum().to_dict()
 
-    return df_resultado, df_suministro, df_pagos, dict_total_pagado, dict_ultimo_estado
+    return df_resultado, df_suministro, df_pagos, dict_total_pagado, dict_ultimo_estado, dict_redeterminaciones
