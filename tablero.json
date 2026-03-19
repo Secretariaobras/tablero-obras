@@ -1,8 +1,8 @@
 [
   {
     "cat_programatica": "OBR100",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Ampliación Obra Belgrano - OC 1734/25 - Ampliacion Veredas San Miguel",
+    "presupuesto": "$ 53.013.665,00",
     "ocs": [
       {
         "oc": "4546_25",
@@ -25,8 +25,8 @@
   },
   {
     "cat_programatica": "OBR103",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Carpetas asfálticas (Etapa 2)",
+    "presupuesto": "$ 1.999.988.750,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -66,8 +66,8 @@
   },
   {
     "cat_programatica": "OBR104",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Ampliación OC 642/25 - Apertura Chapeaurouge entre Paraguay y Jujuy",
+    "presupuesto": "$ 49.644.000,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -107,8 +107,8 @@
   },
   {
     "cat_programatica": "OBR105",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Ampliación OC 2145/25 - Ampliación Pavimento con cordón cuneta +Asfalto",
+    "presupuesto": "$ 392.180.866,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -148,8 +148,8 @@
   },
   {
     "cat_programatica": "OBR106",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Ciudad Judicial (Parte 3)",
+    "presupuesto": "$ 1.261.621.000,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -189,8 +189,8 @@
   },
   {
     "cat_programatica": "OBR107",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Obra hidráulica en Cueto y Sourdeaux - Victoria",
+    "presupuesto": "$ 5.578.190.000,00",
     "ocs": [
       {
         "oc": "DEVUELTO",
@@ -213,8 +213,8 @@
   },
   {
     "cat_programatica": "OBR108",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Intertrabado Arroyo entre Quirno y Sourdeaux",
+    "presupuesto": "$157.561.709,24",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -254,8 +254,8 @@
   },
   {
     "cat_programatica": "OBR109",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Provisión de H8 y H30 para realizar Pavimentos por Administración (Ejercicio 2026)",
+    "presupuesto": "$ 1.869.516.380,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -295,8 +295,8 @@
   },
   {
     "cat_programatica": "OBR110",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Obra Hidráulica en Montevideo y Bourdet",
+    "presupuesto": "$ 109.580.842,65",
     "ocs": [
       {
         "oc": "SP-229-1506",
@@ -319,8 +319,8 @@
   },
   {
     "cat_programatica": "OBR41",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR41) OBRA: \"Pavimentos de hormigon en distintas calles del distrito\"",
+    "presupuesto": "$ 1.215.367.098,10",
     "ocs": [
       {
         "oc": "461_23",
@@ -377,8 +377,8 @@
   },
   {
     "cat_programatica": "OBR42",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR42) OBRA: \"Aperturas calles santa fe, ameghino, quirno, gaspar campos\"-Alpasuma",
+    "presupuesto": "$ 191.059.859,00",
     "ocs": [
       {
         "oc": "4454_24",
@@ -435,8 +435,8 @@
   },
   {
     "cat_programatica": "OBR43",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR43) OBRA: \"Bacheo en principales calles de asfalto\"",
+    "presupuesto": "$ 1.323.073.810,00",
     "ocs": [
       {
         "oc": "4458_24",
@@ -459,8 +459,8 @@
   },
   {
     "cat_programatica": "OBR44",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR44) OBRA: \"Pavimentos asfalticos con cordon cuneta\"",
+    "presupuesto": "$ 1.216.594.200,00",
     "ocs": [
       {
         "oc": "4457_24",
@@ -500,8 +500,8 @@
   },
   {
     "cat_programatica": "OBR51",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR51) OBRA: Proyecto de parquizacion de espacios publicos - rotonda rio segundo",
+    "presupuesto": "$ 32.268.095,00",
     "ocs": [
       {
         "oc": "ANULADA",
@@ -575,9 +575,43 @@
   },
   {
     "cat_programatica": "OBR55",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR55) - \"Construccion de nave deportiva multiproposito\"",
+    "presupuesto": "$ 551.305.982,32",
     "ocs": [
+      {
+        "oc": "PASO DE AÑO",
+        "proveedor": "",
+        "comprometido": 603980000.0,
+        "adjudicado": 0.0,
+        "pagado": 0,
+        "redeterminado": 0,
+        "porcentaje": 0,
+        "estado": "En gestión desde hace 520 días, se encuentra en Gobierno- desde hace 505 días",
+        "Plazo entre OC y SP": 0,
+        "certificado": null,
+        "fecha_inicio": "",
+        "fecha_fin_estimada": "",
+        "historial_cer": [],
+        "link_certificado": null,
+        "items": []
+      },
+      {
+        "oc": "226_25",
+        "proveedor": "G2M SRL",
+        "comprometido": 603980000.0,
+        "adjudicado": 551305982.32,
+        "pagado": 551305982.3199999,
+        "redeterminado": 14993536.31,
+        "porcentaje": 0.9999999999999998,
+        "estado": "En Ejecución, último pago registrado el 19/12/2025",
+        "Plazo entre OC y SP": 44,
+        "certificado": null,
+        "fecha_inicio": "",
+        "fecha_fin_estimada": "",
+        "historial_cer": [],
+        "link_certificado": null,
+        "items": []
+      },
       {
         "oc": "PASO DE AÑO",
         "proveedor": "",
@@ -616,8 +650,8 @@
   },
   {
     "cat_programatica": "OBR58",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Copia de 2024/5041 (OBR58) OBRA: \"NAVE DE OBRAS PUBLICAS\"",
+    "presupuesto": "$ 1.198.994.506,81",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -657,8 +691,8 @@
   },
   {
     "cat_programatica": "OBR59",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR59) OBRA: \"Adaptacion del distribuidor irusta y chapeaurouge\"",
+    "presupuesto": "$ 78.000.000,00",
     "ocs": [
       {
         "oc": "5131_24",
@@ -698,9 +732,77 @@
   },
   {
     "cat_programatica": "OBR60",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR60) \"Apertura Chapeaurouge entre Paraguay y Jujuy\"",
+    "presupuesto": "$ 1.525.658.500,00",
     "ocs": [
+      {
+        "oc": "PASO DE AÑO",
+        "proveedor": "",
+        "comprometido": 1754865400.6,
+        "adjudicado": 0.0,
+        "pagado": 0,
+        "redeterminado": 0,
+        "porcentaje": 0,
+        "estado": "En gestión desde hace 520 días, se encuentra en Gobierno- desde hace 505 días",
+        "Plazo entre OC y SP": 0,
+        "certificado": null,
+        "fecha_inicio": "",
+        "fecha_fin_estimada": "",
+        "historial_cer": [],
+        "link_certificado": null,
+        "items": []
+      },
+      {
+        "oc": "SIN OC",
+        "proveedor": "",
+        "comprometido": 19960000.0,
+        "adjudicado": 0.0,
+        "pagado": 0,
+        "redeterminado": 0,
+        "porcentaje": 0,
+        "estado": "En gestión desde hace ? días, se encuentra en Hacienda- desde hace 735 días",
+        "Plazo entre OC y SP": 0,
+        "certificado": null,
+        "fecha_inicio": "",
+        "fecha_fin_estimada": "",
+        "historial_cer": [],
+        "link_certificado": null,
+        "items": []
+      },
+      {
+        "oc": "642_25",
+        "proveedor": "TRANS-PLUS SRL",
+        "comprometido": 1754865400.6,
+        "adjudicado": 1525658500.0,
+        "pagado": 1525658500.0,
+        "redeterminado": 48652240.0,
+        "porcentaje": 1.0,
+        "estado": "Finalizado. Desde la SP hasta la OC se demoró 40 días. Para finalizar de pagar se demoró 314 días. Se realizaron 13 pagos:\n  -1° pago: 14/03/2025 + 30%\n  -2° pago: 12/05/2025 + 7%\n  -3° pago: 27/06/2025 + 3%\n  -4° pago: 08/07/2025 + 5%\n  -5° pago: 14/08/2025 + 15%\n  -6° pago: 02/09/2025 + 9%\n  -7° pago: 02/10/2025 + 3%\n  -8° pago: 21/10/2025 + 18%\n  -9° pago: 11/12/2025 + 10%\n  -10° pago: 22/12/2025 + 1%\n  -11° pago: 22/12/2025 + 0%\n  -12° pago: 22/12/2025 + 2%\n  -13° pago: 22/12/2025 + 1%",
+        "Plazo entre OC y SP": 40,
+        "certificado": null,
+        "fecha_inicio": "",
+        "fecha_fin_estimada": "",
+        "historial_cer": [],
+        "link_certificado": null,
+        "items": []
+      },
+      {
+        "oc": "111_25",
+        "proveedor": "CONSTRUCTORA FP SRL",
+        "comprometido": 19960000.0,
+        "adjudicado": 19960000.0,
+        "pagado": 0,
+        "redeterminado": 0,
+        "porcentaje": 0.0,
+        "estado": "En Gestión de Compra: Compras OC Imputada  desde hace 441 días",
+        "Plazo entre OC y SP": 8,
+        "certificado": null,
+        "fecha_inicio": "",
+        "fecha_fin_estimada": "",
+        "historial_cer": [],
+        "link_certificado": null,
+        "items": []
+      },
       {
         "oc": "PASO DE AÑO",
         "proveedor": "",
@@ -773,8 +875,8 @@
   },
   {
     "cat_programatica": "OBR61",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR61) Obra: \"Mano de obra para OH Fraga\"",
+    "presupuesto": "$ 163.057.890,00",
     "ocs": [
       {
         "oc": "4835_24",
@@ -916,8 +1018,8 @@
   },
   {
     "cat_programatica": "OBR62",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR62) OBRA: \"Cerramiento calle santa ana y azcuenaga\"",
+    "presupuesto": "$ 50.900.000,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -1093,8 +1195,8 @@
   },
   {
     "cat_programatica": "OBR63",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Copia de 2024/5041 (OBR63) Provision y colocacion de interseccion semaforica en: interseccion \"Gaspar campos y las malvinas\" e \"Irigoin esq Zapiola\"",
+    "presupuesto": "$ 55.460.450,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -1151,8 +1253,8 @@
   },
   {
     "cat_programatica": "OBR64",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR64) Bicisenda en corredor aerobico, etapa 1 conesa - pardo",
+    "presupuesto": "$ 77.066.080,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -1192,8 +1294,8 @@
   },
   {
     "cat_programatica": "OBR65",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR65) Repavimentacion sobre la calle salerno a la espera de la apertura del paso a nivel sobre las vias del FFCC san martin",
+    "presupuesto": "$ 83.263.320,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -1233,8 +1335,8 @@
   },
   {
     "cat_programatica": "OBR66",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR66) OBRA: \"PAVIMENTO DE HORMIGON DE 15CM\"",
+    "presupuesto": "$ 705.600.000,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -1274,8 +1376,8 @@
   },
   {
     "cat_programatica": "OBR67",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Hospital larcade",
+    "presupuesto": "$ 4.302.564.929,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -1332,8 +1434,8 @@
   },
   {
     "cat_programatica": "OBR68",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR68) Obra: \"Puesto de seguridad y baños en el corredor francia\"",
+    "presupuesto": "$ 139.000.000,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -1373,8 +1475,8 @@
   },
   {
     "cat_programatica": "OBR69",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR69) OBRA: Belgrano",
+    "presupuesto": "$ 276.147.984,92",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -1414,8 +1516,8 @@
   },
   {
     "cat_programatica": "OBR70",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR70) OBRA: Mano de obra y materiales acceso gaspar campos",
+    "presupuesto": "$ 594.659.200,00",
     "ocs": [
       {
         "oc": "3443_25",
@@ -1455,8 +1557,8 @@
   },
   {
     "cat_programatica": "OBR72",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR72) OBRA: Pavimentos asfalticos con cordon cuneta",
+    "presupuesto": "$ 1.960.904.330,00",
     "ocs": [
       {
         "oc": "2145_25",
@@ -1479,8 +1581,8 @@
   },
   {
     "cat_programatica": "OBR74",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR74) Reparacion de paseo san miguel - reparacion de veredas deterioradas en el paseo san miguel",
+    "presupuesto": "$ 82.000.000,00",
     "ocs": [
       {
         "oc": "1062_25",
@@ -1503,8 +1605,8 @@
   },
   {
     "cat_programatica": "OBR75",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR75) Intervencion de veredas en bella vista",
+    "presupuesto": "$ 273.706.800,00",
     "ocs": [
       {
         "oc": "2284_25",
@@ -1544,8 +1646,8 @@
   },
   {
     "cat_programatica": "OBR76",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR76) REPARACION CLUB INDIOS",
+    "presupuesto": "$ 14.300.000,00",
     "ocs": [
       {
         "oc": "1284_25",
@@ -1568,8 +1670,8 @@
   },
   {
     "cat_programatica": "OBR77",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR77) Alquiler de pala WA200 (incluy operario, combustible, seguros, equipos) para limpieza de barrio madre esperanza",
+    "presupuesto": "$ 38.500.000,00",
     "ocs": [
       {
         "oc": "2313_25",
@@ -1592,8 +1694,8 @@
   },
   {
     "cat_programatica": "OBR78",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR78) - \"Hidraulica barrio mitre\"",
+    "presupuesto": "$ 810.919.138,00",
     "ocs": [
       {
         "oc": "2767_25",
@@ -1616,8 +1718,8 @@
   },
   {
     "cat_programatica": "OBR79",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR79) - \"Puesta en valor del estacionamiento / subsuelo del palacio municipal\"",
+    "presupuesto": "$ 37.975.000,00",
     "ocs": [
       {
         "oc": "2143_25",
@@ -1640,8 +1742,8 @@
   },
   {
     "cat_programatica": "OBR80-01",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR80-01) Contratacion de \"consultoria para anteproyecto de la pista deportiva\" y masterplan",
+    "presupuesto": "$ 15.400.000,00",
     "ocs": [
       {
         "oc": "2095_25",
@@ -1664,8 +1766,8 @@
   },
   {
     "cat_programatica": "OBR81",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR81) Obra \"Remodelacion casona de Pardo\"",
+    "presupuesto": "$ 131.155.000,00",
     "ocs": [
       {
         "oc": "3403_25",
@@ -1688,8 +1790,8 @@
   },
   {
     "cat_programatica": "OBR82",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR82) Alquiler de retroexcavadora hyundai 210",
+    "presupuesto": "$ 19.900.000,00",
     "ocs": [
       {
         "oc": "2043_25",
@@ -1712,8 +1814,8 @@
   },
   {
     "cat_programatica": "OBR83",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR83) Plan de Forestacion",
+    "presupuesto": "$ 85.525.825,00",
     "ocs": [
       {
         "oc": "3101_25",
@@ -1787,8 +1889,8 @@
   },
   {
     "cat_programatica": "OBR84",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR84) Repav. Gaspar Campos",
+    "presupuesto": "$ 1.295.627.448,40",
     "ocs": [
       {
         "oc": "3390_25",
@@ -1811,26 +1913,9 @@
   },
   {
     "cat_programatica": "OBR87",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR87) Ampliacion lic. Bacheo",
+    "presupuesto": "$ 264.614.762,00",
     "ocs": [
-      {
-        "oc": "3462_25",
-        "proveedor": "PIUTERRA S.A.",
-        "comprometido": 264614762.0,
-        "adjudicado": 264614762.0,
-        "pagado": 264614762.0,
-        "redeterminado": 59245519.33,
-        "porcentaje": 1.0,
-        "estado": "Finalizado. Desde la SP hasta la OC se demoró 20 días. Para finalizar de pagar se demoró 117 días. Se realizaron 4 pagos:\n  -1° pago: 09/10/2025 + 69%\n  -2° pago: 03/11/2025 + 31%\n  -3° pago: 22/12/2025 + 16%\n  -4° pago: 22/12/2025 + 7%",
-        "Plazo entre OC y SP": 20,
-        "certificado": null,
-        "fecha_inicio": "",
-        "fecha_fin_estimada": "",
-        "historial_cer": [],
-        "link_certificado": null,
-        "items": []
-      },
       {
         "oc": "3462_25",
         "proveedor": "PIUTERRA S.A.",
@@ -1852,8 +1937,8 @@
   },
   {
     "cat_programatica": "OBR88",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR88) Corredor Aerobico entre Conesa y Pardo",
+    "presupuesto": "$ 851.382.695,37",
     "ocs": [
       {
         "oc": "3391_25",
@@ -2563,8 +2648,8 @@
   },
   {
     "cat_programatica": "OBR90",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Pasos a Nivel",
+    "presupuesto": "$ 2.525.412.112,00",
     "ocs": [
       {
         "oc": "3940_25",
@@ -2587,8 +2672,8 @@
   },
   {
     "cat_programatica": "OBR91",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Carpetas Asfalticas en distintas calles del distrito",
+    "presupuesto": "$ 2.000.000.000,00",
     "ocs": [
       {
         "oc": "3392_25",
@@ -2611,8 +2696,8 @@
   },
   {
     "cat_programatica": "OBR92",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Adquisicion de hormigon para ejecucion de Pav. por Administracion",
+    "presupuesto": "$ 529.780.350,00",
     "ocs": [
       {
         "oc": "3891_25",
@@ -2686,8 +2771,8 @@
   },
   {
     "cat_programatica": "OBR92-01",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Mano de obra para ejecucion de Pav. por Administracion",
+    "presupuesto": "$ 298.000.000,00",
     "ocs": [
       {
         "oc": "4660_25",
@@ -2727,8 +2812,8 @@
   },
   {
     "cat_programatica": "OBR93",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR93) Obra: \"Pavimento de hormigon etapa II\"",
+    "presupuesto": "$ 2.205.072.000,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -2768,8 +2853,8 @@
   },
   {
     "cat_programatica": "OBR94",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "(OBR94) Obra: \"Pavimentos asfalticos con cordon cuneta etapa II\"",
+    "presupuesto": "$ 2.954.870.734,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -2809,8 +2894,8 @@
   },
   {
     "cat_programatica": "OBR96",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Hidraulica y Pav. San Juan",
+    "presupuesto": "$ 493.829.275,24",
     "ocs": [
       {
         "oc": "4516_25",
@@ -2833,8 +2918,8 @@
   },
   {
     "cat_programatica": "OBR97",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Obras de Renovacion de Plazas: Juan Domingo Peron - 17 octubre - 4 heroes de malvinas - mujeres argentinas - los paraisos",
+    "presupuesto": "$ 1.778.879.460,92",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -2857,8 +2942,8 @@
   },
   {
     "cat_programatica": "OBR98",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Veredas en centros comerciales",
+    "presupuesto": "$ 595.872.000,00",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
@@ -3068,8 +3153,8 @@
   },
   {
     "cat_programatica": "OBR99",
-    "nombre_proyecto": "",
-    "presupuesto": "",
+    "nombre_proyecto": "Obra Hid. Araucano y Defensa",
+    "presupuesto": "$ 406.959.782,68",
     "ocs": [
       {
         "oc": "PASO DE AÑO",
