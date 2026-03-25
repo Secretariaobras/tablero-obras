@@ -305,7 +305,7 @@
                 { l: 'Presupuesto', v: fmtM(presup), a: '#94a3b8' },
                 { l: 'Adjudicado', v: fmtM(adj), a: '#3b82f6' },
                 { l: 'Pagado', v: fmtM(pag), a: '#0ea5e9' },
-                { l: 'Valor de OBR', v: fmtM(val_obr), a: '#94a3b8' }
+                { l: 'Valor Total de OBR', v: fmtM(val_obr), a: '#94a3b8' }
               ].map(k => (
                 <div key={k.l} style={{ background: 'white', borderRadius: '16px', border: '1px solid #e2e8f0', borderBottom: `4px solid ${k.a}`, padding: '20px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
                   <div className="lbl">{k.l}</div>
@@ -375,7 +375,7 @@
                     {oc.fecha_fin_estimada && <div style={S.infoBox}><div className="lbl">Fin estimado</div><div style={{ fontWeight: 600 }}>{oc.fecha_fin_estimada}</div></div>}
                     {oc["Plazo entre OC y SP"] !== undefined && (
                       <div style={S.infoBox}>
-                        <div className="lbl">Plazo (OC - SP)</div>
+                        <div className="lbl">Plazo (SP - OC)</div>
                         <div style={{ fontWeight: 600 }}>{oc["Plazo entre OC y SP"]} días</div>
                       </div>
                     )}
