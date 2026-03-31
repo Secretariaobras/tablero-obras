@@ -2134,10 +2134,10 @@
           {
             "certificado": "Cer6",
             "total_oc": 1031798280.0,
-            "total_unidad_acum": 0.0,
-            "total_pct_acum": 0.0,
-            "total_importe_mes": -316902580.0,
-            "total_importe_acum": 0.0,
+            "total_unidad_acum": 4093.0,
+            "total_pct_acum": 23.13,
+            "total_importe_mes": -78252580.0,
+            "total_importe_acum": 238650000.0,
             "fotos": [],
             "link_cer": "https://docs.google.com/spreadsheets/d/1dQkfGVjRphzjiuWGcxTzTbIDeG3zhWdQuKp8SlT_0Sg/edit#gid=1640032777",
             "link_in": "https://docs.google.com/spreadsheets/d/1dQkfGVjRphzjiuWGcxTzTbIDeG3zhWdQuKp8SlT_0Sg/edit#gid=378402342"
