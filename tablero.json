@@ -372,6 +372,30 @@
     ]
   },
   {
+    "cat_programatica": "OBR118",
+    "nombre_proyecto": "Cloacas BV Pendiente",
+    "presupuesto": " $250,000,000.00",
+    "ocs": [
+      {
+        "oc": "SP-1973-1666",
+        "proveedor": "",
+        "comprometido": 899100000.0,
+        "adjudicado": 0.0,
+        "pagado": 0,
+        "redeterminado": 0,
+        "porcentaje": 0,
+        "estado": "En gestión desde hace 0 días, se encuentra en Hacienda-sacar sg desde hace 0 días",
+        "Plazo entre OC y SP": 0,
+        "certificado": null,
+        "fecha_inicio": "",
+        "fecha_fin_estimada": "",
+        "historial_cer": [],
+        "link_certificado": null,
+        "items": []
+      }
+    ]
+  },
+  {
     "cat_programatica": "OBR41",
     "nombre_proyecto": "(OBR41) OBRA: \"Pavimentos de hormigon en distintas calles del distrito\"",
     "presupuesto": " $191,059,859.00",
